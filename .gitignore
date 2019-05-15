@@ -33,3 +33,6 @@
 
 # Build directory
 build/
+
+# not include model.obj file
+!/resources/*/*/*.obj
