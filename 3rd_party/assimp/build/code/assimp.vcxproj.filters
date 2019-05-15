@@ -1,0 +1,1695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Assimp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BaseImporter.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BaseProcess.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\PostStepRegistry.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ImporterRegistry.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\DefaultIOStream.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\DefaultIOSystem.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\CInterfaceIOWrapper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Importer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SGSpatialSort.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\VertexTriangleAdjacency.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SpatialSort.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SceneCombiner.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ScenePreprocessor.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SkeletonMeshBuilder.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SplitByBoneCountProcess.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ScaleProcess.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\StandardShapes.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\TargetAnimation.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\RemoveComments.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Subdivision.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\scene.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Bitmap.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Version.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\CreateAnimMesh.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\DefaultLogger.cpp">
+      <Filter>Logging</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Exporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AssimpCExport.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\CalcTangentsProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ComputeUVMappingProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ConvertToLHProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FindDegenerates.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FindInstancesProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FindInvalidDataProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FixNormalsStep.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\GenFaceNormalsProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\GenVertexNormalsProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\PretransformVertices.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ImproveCacheLocality.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\JoinVerticesProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\LimitBoneWeightsProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\RemoveRedundantMaterials.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\RemoveVCProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SortByPTypeProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SplitLargeMeshes.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\TextureTransform.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\TriangulateProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ValidateDataStructure.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OptimizeGraph.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OptimizeMeshes.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\DeboneProcess.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ProcessHelper.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MakeVerboseFormat.cpp">
+      <Filter>PostProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MaterialSystem.cpp">
+      <Filter>MaterialSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\StepExporter.cpp">
+      <Filter>Step</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AMFImporter.cpp">
+      <Filter>AMF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AMFImporter_Geometry.cpp">
+      <Filter>AMF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AMFImporter_Material.cpp">
+      <Filter>AMF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AMFImporter_Postprocess.cpp">
+      <Filter>AMF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\3DSConverter.cpp">
+      <Filter>3DS</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\3DSLoader.cpp">
+      <Filter>3DS</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\3DSExporter.cpp">
+      <Filter>3DS</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ACLoader.cpp">
+      <Filter>AC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ASELoader.cpp">
+      <Filter>ASE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ASEParser.cpp">
+      <Filter>ASE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AssbinExporter.cpp">
+      <Filter>ASSBIN</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AssbinLoader.cpp">
+      <Filter>ASSBIN</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\AssxmlExporter.cpp">
+      <Filter>ASSXML</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\B3DImporter.cpp">
+      <Filter>B3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BVHLoader.cpp">
+      <Filter>BVH</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ColladaLoader.cpp">
+      <Filter>COLLADA</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ColladaParser.cpp">
+      <Filter>COLLADA</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ColladaExporter.cpp">
+      <Filter>COLLADA</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\DXFLoader.cpp">
+      <Filter>DXF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\CSMLoader.cpp">
+      <Filter>CSM</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\HMPLoader.cpp">
+      <Filter>HMP</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IRRMeshLoader.cpp">
+      <Filter>IRRMESH</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IRRShared.cpp">
+      <Filter>IRR</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IRRLoader.cpp">
+      <Filter>IRR</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\LWOAnimation.cpp">
+      <Filter>LWO</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\LWOBLoader.cpp">
+      <Filter>LWO</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\LWOLoader.cpp">
+      <Filter>LWO</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\LWOMaterial.cpp">
+      <Filter>LWO</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\LWSLoader.cpp">
+      <Filter>LWS</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MD2Loader.cpp">
+      <Filter>MD2</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MD3Loader.cpp">
+      <Filter>MD3</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MD5Loader.cpp">
+      <Filter>MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MD5Parser.cpp">
+      <Filter>MD5</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MDCLoader.cpp">
+      <Filter>MDC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MDLLoader.cpp">
+      <Filter>MDL</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MDLMaterialLoader.cpp">
+      <Filter>MDL</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\NFFLoader.cpp">
+      <Filter>NFF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\NDOLoader.cpp">
+      <Filter>NDO</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OFFLoader.cpp">
+      <Filter>OFF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ObjFileImporter.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ObjFileMtlImporter.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ObjFileParser.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\ObjExporter.cpp">
+      <Filter>OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OgreImporter.cpp">
+      <Filter>OGRE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OgreStructs.cpp">
+      <Filter>OGRE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OgreBinarySerializer.cpp">
+      <Filter>OGRE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OgreXmlSerializer.cpp">
+      <Filter>OGRE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OgreMaterial.cpp">
+      <Filter>OGRE</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OpenGEXExporter.cpp">
+      <Filter>OPENGEX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\OpenGEXImporter.cpp">
+      <Filter>OPENGEX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\PlyLoader.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\PlyParser.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\PlyExporter.cpp">
+      <Filter>PLY</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MS3DLoader.cpp">
+      <Filter>MS3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\COBLoader.cpp">
+      <Filter>COB</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BlenderLoader.cpp">
+      <Filter>BLEND</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BlenderDNA.cpp">
+      <Filter>BLEND</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BlenderScene.cpp">
+      <Filter>BLEND</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BlenderModifier.cpp">
+      <Filter>BLEND</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BlenderBMesh.cpp">
+      <Filter>BLEND</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\BlenderTessellator.cpp">
+      <Filter>BLEND</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCLoader.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCReaderGen1.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCReaderGen2.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCUtil.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCGeometry.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCMaterial.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCProfile.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCCurve.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCBoolean.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\IFCOpenings.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\STEPFileReader.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\STEPFileEncoding.cpp">
+      <Filter>IFC</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\XGLLoader.cpp">
+      <Filter>XGL</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXImporter.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXParser.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXTokenizer.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXConverter.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXUtil.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXDocument.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXProperties.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXMeshGeometry.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXMaterial.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXModel.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXAnimation.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXNodeAttribute.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXDeformer.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXBinaryTokenizer.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FBXDocumentUtil.cpp">
+      <Filter>FBX</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Q3DLoader.cpp">
+      <Filter>Q3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Q3BSPFileParser.cpp">
+      <Filter>Q3BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Q3BSPFileImporter.cpp">
+      <Filter>Q3BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\Q3BSPZipArchive.cpp">
+      <Filter>Q3BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\RawLoader.cpp">
+      <Filter>RAW</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SIBImporter.cpp">
+      <Filter>SIB</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\SMDLoader.cpp">
+      <Filter>SMD</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\STLLoader.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\STLExporter.cpp">
+      <Filter>STL</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\TerragenLoader.cpp">
+      <Filter>TERRAGEN</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\UnrealLoader.cpp">
+      <Filter>3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\XFileImporter.cpp">
+      <Filter>X</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\XFileParser.cpp">
+      <Filter>X</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\XFileExporter.cpp">
+      <Filter>X</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DExporter.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Geometry2D.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Geometry3D.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Group.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Light.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Metadata.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Networking.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Postprocess.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Rendering.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Shape.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Texturing.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\FIReader.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\X3DVocabulary.cpp">
+      <Filter>X3D</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\glTFImporter.cpp">
+      <Filter>GLTF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\glTFExporter.cpp">
+      <Filter>GLTF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\glTF2Importer.cpp">
+      <Filter>GLTF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\glTF2Exporter.cpp">
+      <Filter>GLTF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\D3MFImporter.cpp">
+      <Filter>3MF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\D3MFExporter.cpp">
+      <Filter>3MF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\D3MFOpcPackage.cpp">
+      <Filter>3MF</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MMDImporter.cpp">
+      <Filter>MMD</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\code\MMDPmxParser.cpp">
+      <Filter>MMD</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\unzip\ioapi.c">
+      <Filter>unzip</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\unzip\unzip.c">
+      <Filter>unzip</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\common\shapes.cc">
+      <Filter>Poly2Tri</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\advancing_front.cc">
+      <Filter>Poly2Tri</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\cdt.cc">
+      <Filter>Poly2Tri</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\sweep.cc">
+      <Filter>Poly2Tri</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\sweep_context.cc">
+      <Filter>Poly2Tri</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\clipper\clipper.cpp">
+      <Filter>Clipper</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\code\OpenDDLParser.cpp">
+      <Filter>openddl_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\code\DDLNode.cpp">
+      <Filter>openddl_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\code\OpenDDLCommon.cpp">
+      <Filter>openddl_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\code\OpenDDLExport.cpp">
+      <Filter>openddl_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\code\Value.cpp">
+      <Filter>openddl_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\code\OpenDDLStream.cpp">
+      <Filter>openddl_parser</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcArithmeticCodec.cpp">
+      <Filter>open3dgc</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcDynamicVectorDecoder.cpp">
+      <Filter>open3dgc</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcDynamicVectorEncoder.cpp">
+      <Filter>open3dgc</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTools.cpp">
+      <Filter>open3dgc</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTriangleFans.cpp">
+      <Filter>open3dgc</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Google Download\assimp-4.1.0\contrib\zip\src\zip.c">
+      <Filter>ziplib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\fast_atof.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\qnan.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BaseImporter.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BaseProcess.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Importer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ScenePrivate.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ByteSwapper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\DefaultProgressHandler.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\CInterfaceIOWrapper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Hash.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IFF.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MemoryIOWrapper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ParsingUtils.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StreamReader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StreamWriter.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StringComparison.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StringUtils.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SGSpatialSort.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\VertexTriangleAdjacency.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\GenericProperty.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SpatialSort.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ScenePreprocessor.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SkeletonMeshBuilder.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SplitByBoneCountProcess.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ScaleProcess.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SmoothingGroups.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StandardShapes.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\TargetAnimation.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\RemoveComments.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Subdivision.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Vertex.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LineSplitter.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\TinyFormatter.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Profiler.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LogAux.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Bitmap.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\XMLTools.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IOStreamBuffer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\CreateAnimMesh.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\DefaultLogger.hpp">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\LogStream.hpp">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Logger.hpp">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\NullLogger.hpp">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Win32DebugLogStream.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FileLogStream.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StdOStreamLogStream.h">
+      <Filter>Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlobIOSystem.h">
+      <Filter>Exporter</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\CalcTangentsProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ComputeUVMappingProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ConvertToLHProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FindDegenerates.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FindInstancesProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FindInvalidDataProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FixNormalsStep.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\GenFaceNormalsProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\GenVertexNormalsProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\PretransformVertices.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ImproveCacheLocality.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\JoinVerticesProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LimitBoneWeightsProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\RemoveRedundantMaterials.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\RemoveVCProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SortByPTypeProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SplitLargeMeshes.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\TextureTransform.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\TriangulateProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ValidateDataStructure.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OptimizeGraph.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OptimizeMeshes.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\DeboneProcess.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ProcessHelper.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\PolyTools.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MakeVerboseFormat.h">
+      <Filter>PostProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MaterialSystem.h">
+      <Filter>MaterialSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\StepExporter.h">
+      <Filter>Step</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\AMFImporter.hpp">
+      <Filter>AMF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\AMFImporter_Macro.hpp">
+      <Filter>AMF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\AMFImporter_Node.hpp">
+      <Filter>AMF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\3DSHelper.h">
+      <Filter>3DS</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\3DSLoader.h">
+      <Filter>3DS</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\3DSExporter.h">
+      <Filter>3DS</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ACLoader.h">
+      <Filter>AC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ASELoader.h">
+      <Filter>ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ASEParser.h">
+      <Filter>ASE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\AssbinExporter.h">
+      <Filter>ASSBIN</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\AssbinLoader.h">
+      <Filter>ASSBIN</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\AssxmlExporter.h">
+      <Filter>ASSXML</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\B3DImporter.h">
+      <Filter>B3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BVHLoader.h">
+      <Filter>BVH</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ColladaHelper.h">
+      <Filter>COLLADA</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ColladaLoader.h">
+      <Filter>COLLADA</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ColladaParser.h">
+      <Filter>COLLADA</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ColladaExporter.h">
+      <Filter>COLLADA</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\DXFLoader.h">
+      <Filter>DXF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\DXFHelper.h">
+      <Filter>DXF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\CSMLoader.h">
+      <Filter>CSM</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\HMPFileData.h">
+      <Filter>HMP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\HMPLoader.h">
+      <Filter>HMP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\HalfLifeFileData.h">
+      <Filter>HMP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IRRMeshLoader.h">
+      <Filter>IRRMESH</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IRRShared.h">
+      <Filter>IRR</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IRRLoader.h">
+      <Filter>IRR</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LWOAnimation.h">
+      <Filter>LWO</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LWOFileData.h">
+      <Filter>LWO</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LWOLoader.h">
+      <Filter>LWO</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\LWSLoader.h">
+      <Filter>LWS</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD2FileData.h">
+      <Filter>MD2</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD2Loader.h">
+      <Filter>MD2</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD2NormalTable.h">
+      <Filter>MD2</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD3FileData.h">
+      <Filter>MD3</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD3Loader.h">
+      <Filter>MD3</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD5Loader.h">
+      <Filter>MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MD5Parser.h">
+      <Filter>MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MDCFileData.h">
+      <Filter>MDC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MDCLoader.h">
+      <Filter>MDC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MDCNormalTable.h">
+      <Filter>MDC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MDLDefaultColorMap.h">
+      <Filter>MDL</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MDLFileData.h">
+      <Filter>MDL</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MDLLoader.h">
+      <Filter>MDL</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\NFFLoader.h">
+      <Filter>NFF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\NDOLoader.h">
+      <Filter>NDO</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OFFLoader.h">
+      <Filter>OFF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ObjFileData.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ObjFileImporter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ObjFileMtlImporter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ObjFileParser.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ObjTools.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\ObjExporter.h">
+      <Filter>OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OgreImporter.h">
+      <Filter>OGRE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OgreStructs.h">
+      <Filter>OGRE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OgreParsingUtils.h">
+      <Filter>OGRE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OgreBinarySerializer.h">
+      <Filter>OGRE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OgreXmlSerializer.h">
+      <Filter>OGRE</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OpenGEXExporter.h">
+      <Filter>OPENGEX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OpenGEXImporter.h">
+      <Filter>OPENGEX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\OpenGEXStructs.h">
+      <Filter>OPENGEX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\PlyLoader.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\PlyParser.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\PlyExporter.h">
+      <Filter>PLY</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MS3DLoader.h">
+      <Filter>MS3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\COBLoader.h">
+      <Filter>COB</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\COBScene.h">
+      <Filter>COB</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderLoader.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderDNA.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderDNA.inl">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderScene.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderSceneGen.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderIntermediate.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderModifier.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderBMesh.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\BlenderTessellator.h">
+      <Filter>BLEND</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IFCLoader.h">
+      <Filter>IFC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IFCReaderGen.h">
+      <Filter>IFC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\IFCUtil.h">
+      <Filter>IFC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\STEPFile.h">
+      <Filter>IFC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\STEPFileReader.h">
+      <Filter>IFC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\STEPFileEncoding.h">
+      <Filter>IFC</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\XGLLoader.h">
+      <Filter>XGL</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXCompileConfig.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXImporter.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXParser.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXTokenizer.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXImportSettings.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXConverter.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXUtil.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXDocument.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXProperties.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FBXMeshGeometry.h">
+      <Filter>FBX</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Q3DLoader.h">
+      <Filter>Q3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Q3BSPFileData.h">
+      <Filter>Q3BSP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Q3BSPFileParser.h">
+      <Filter>Q3BSP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Q3BSPFileImporter.h">
+      <Filter>Q3BSP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\Q3BSPZipArchive.h">
+      <Filter>Q3BSP</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\RawLoader.h">
+      <Filter>RAW</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SIBImporter.h">
+      <Filter>SIB</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\SMDLoader.h">
+      <Filter>SMD</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\STLLoader.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\STLExporter.h">
+      <Filter>STL</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\TerragenLoader.h">
+      <Filter>TERRAGEN</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\UnrealLoader.h">
+      <Filter>3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\XFileHelper.h">
+      <Filter>X</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\XFileImporter.h">
+      <Filter>X</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\XFileParser.h">
+      <Filter>X</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\XFileExporter.h">
+      <Filter>X</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\X3DExporter.hpp">
+      <Filter>X3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\X3DImporter.hpp">
+      <Filter>X3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Macro.hpp">
+      <Filter>X3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\X3DImporter_Node.hpp">
+      <Filter>X3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\FIReader.hpp">
+      <Filter>X3D</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTFAsset.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTFAsset.inl">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTFAssetWriter.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTFAssetWriter.inl">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTFImporter.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTFExporter.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTF2Asset.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTF2Asset.inl">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTF2AssetWriter.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTF2AssetWriter.inl">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTF2Importer.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\glTF2Exporter.h">
+      <Filter>GLTF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\D3MFImporter.h">
+      <Filter>3MF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\D3MFExporter.h">
+      <Filter>3MF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\D3MFOpcPackage.h">
+      <Filter>3MF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\3MFXmlTags.h">
+      <Filter>3MF</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MMDCpp14.h">
+      <Filter>MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MMDImporter.h">
+      <Filter>MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MMDPmdParser.h">
+      <Filter>MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MMDPmxParser.h">
+      <Filter>MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\MMDVmdParser.h">
+      <Filter>MMD</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\code\irrXMLWrapper.h">
+      <Filter>IrrXML</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\unzip\crypt.h">
+      <Filter>unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\unzip\ioapi.h">
+      <Filter>unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\unzip\unzip.h">
+      <Filter>unzip</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\common\shapes.h">
+      <Filter>Poly2Tri</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\common\utils.h">
+      <Filter>Poly2Tri</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\advancing_front.h">
+      <Filter>Poly2Tri</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\cdt.h">
+      <Filter>Poly2Tri</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\sweep.h">
+      <Filter>Poly2Tri</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\poly2tri\poly2tri\sweep\sweep_context.h">
+      <Filter>Poly2Tri</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\clipper\clipper.hpp">
+      <Filter>Clipper</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\OpenDDLParser.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\OpenDDLParserUtils.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\OpenDDLCommon.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\OpenDDLExport.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\OpenDDLStream.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\DDLNode.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\openddlparser\include\openddlparser\Value.h">
+      <Filter>openddl_parser</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcAdjacencyInfo.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcArithmeticCodec.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcBinaryStream.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcCommon.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcDVEncodeParams.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcDynamicVectorDecoder.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcDynamicVectorEncoder.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcDynamicVector.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcFIFO.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcIndexedFaceSet.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcIndexedFaceSet.inl">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcSC3DMCDecoder.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcSC3DMCDecoder.inl">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcSC3DMCEncodeParams.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcSC3DMCEncoder.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcSC3DMCEncoder.inl">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTimer.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTriangleFans.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTriangleListDecoder.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTriangleListDecoder.inl">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTriangleListEncoder.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcTriangleListEncoder.inl">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcVector.h">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\Open3DGC\o3dgcVector.inl">
+      <Filter>open3dgc</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\zip\src\miniz.h">
+      <Filter>ziplib</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\contrib\zip\src\zip.h">
+      <Filter>ziplib</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\anim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\ai_assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\color4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\color4.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\build\include\assimp\config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\cfileio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\material.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\matrix3x3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\matrix3x3.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\matrix4x4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\matrix4x4.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\postprocess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\quaternion.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\metadata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\vector2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\vector2.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\vector3.inl">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\cimport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\importerdesc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Importer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\ProgressHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\IOStream.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\IOSystem.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\cexport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Exporter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\DefaultIOStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\DefaultIOSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\SceneCombiner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Compiler\pushpack1.h">
+      <Filter>Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Compiler\poppack1.h">
+      <Filter>Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Google Download\assimp-4.1.0\include\assimp\Compiler\pstdint.h">
+      <Filter>Compiler</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Google Download\assimp-4.1.0\code\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="3D">
+      <UniqueIdentifier>{017838D7-C499-344D-B322-6413F8721F66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3DS">
+      <UniqueIdentifier>{E6321D0D-CB97-3988-9E1B-36097F969C99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3MF">
+      <UniqueIdentifier>{5A414D0F-E514-3BAC-BDC9-39BA221F5836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AC">
+      <UniqueIdentifier>{15C65057-8326-30E5-9D32-F0C77D3D8F47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AMF">
+      <UniqueIdentifier>{B7B3FA71-E0B6-354B-B7BB-61BA7783934E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ASE">
+      <UniqueIdentifier>{313BB685-AA49-37F8-85E6-7D8FDBC2B4D6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ASSBIN">
+      <UniqueIdentifier>{D0BDE084-91DB-3CBE-9178-3FFC9F54E133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ASSXML">
+      <UniqueIdentifier>{06B6E765-B2BD-3DAE-9BDD-E1D6B70A140E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="B3D">
+      <UniqueIdentifier>{D58D294B-1619-3A95-A4C1-70CB2C5964DC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BLEND">
+      <UniqueIdentifier>{C88B3A43-3A39-3662-9296-02B3DF5B16FB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BVH">
+      <UniqueIdentifier>{A0D2B78C-C9F1-3CAF-A711-FBCF8EFFB194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="COB">
+      <UniqueIdentifier>{E8C74FC7-55E4-3264-8EF9-79EC390F0561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="COLLADA">
+      <UniqueIdentifier>{2AEF19D1-3737-3FD8-A896-1A87A63B2CC6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CSM">
+      <UniqueIdentifier>{702C6CA3-7874-3CED-A5E8-F86DD14F6E22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Clipper">
+      <UniqueIdentifier>{C2CF21D6-D10B-3A23-94FA-D80204EC3EA5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{587A49AF-5818-31BE-851D-95613D4E42B7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Compiler">
+      <UniqueIdentifier>{A31DD1BE-5C2B-3854-AAE9-E3D5BA0FC365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXF">
+      <UniqueIdentifier>{8498BFE7-3B5A-3A3D-8589-70879D438CE5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Exporter">
+      <UniqueIdentifier>{2B942C58-D7F9-3472-9B94-A8A39B6C89AC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FBX">
+      <UniqueIdentifier>{9EA53857-CB56-3E98-B67C-D1A1D23EB778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLTF">
+      <UniqueIdentifier>{7551A74A-39CE-3018-8275-5F363078CDB2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HMP">
+      <UniqueIdentifier>{126550F2-A690-3902-86E1-23AD0E0D899C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CA67E103-1F94-30CB-AA87-B781871D115D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IFC">
+      <UniqueIdentifier>{ACDDE051-36B3-3D8D-BA30-AC69CE3662F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IRR">
+      <UniqueIdentifier>{A272A2CD-2A58-3C34-A97B-B3A573BCDEF8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IRRMESH">
+      <UniqueIdentifier>{2953C23B-EEF4-3EA8-8E14-925776D75E28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IrrXML">
+      <UniqueIdentifier>{EC8C0055-0B99-3F06-82B4-BBB495A4A8ED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LWO">
+      <UniqueIdentifier>{78CAD98E-38AB-337D-AFD3-283525AF49A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LWS">
+      <UniqueIdentifier>{815DADE4-EDE5-339E-B321-57AD7512DE90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logging">
+      <UniqueIdentifier>{AC5FA97D-03EE-32C8-90B4-4E1AACF94A85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MD2">
+      <UniqueIdentifier>{D91A7731-A025-3477-A49E-17E7A58DC5C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MD3">
+      <UniqueIdentifier>{720EA934-B6BC-3CFC-938D-C5F7E77A87BC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MD5">
+      <UniqueIdentifier>{710945BC-6FD7-37B5-B14F-B38FCF29386E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MDC">
+      <UniqueIdentifier>{F46DE401-9735-3771-8E39-F6EB3619EAB2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MDL">
+      <UniqueIdentifier>{24C81811-202A-3D35-9EE8-23B1C5594535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MMD">
+      <UniqueIdentifier>{8693A1AC-7ACA-3C13-A659-5DD7B452A3E7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MS3D">
+      <UniqueIdentifier>{E8D15D28-6B94-325C-B948-0B3865135186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MaterialSystem">
+      <UniqueIdentifier>{85F10F7B-D021-3424-83A4-286387E44679}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NDO">
+      <UniqueIdentifier>{EF821761-6B88-366E-BD28-E6A9846BE670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NFF">
+      <UniqueIdentifier>{F85BAD04-725D-3B4E-AE9E-EDDC6CFA292F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OBJ">
+      <UniqueIdentifier>{FA2195ED-B985-389C-825D-C05A83CED243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OFF">
+      <UniqueIdentifier>{CF6433AB-A608-3D73-BB12-9C173DA93222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OGRE">
+      <UniqueIdentifier>{BAD6A23B-54B0-3A8B-8013-EE8AF0BC8E0A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OPENGEX">
+      <UniqueIdentifier>{FAC81B6E-C953-39B9-A417-6DB61AF7FE45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PLY">
+      <UniqueIdentifier>{0A153E95-6840-3196-BBCA-0BC1AC9F8AB2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Poly2Tri">
+      <UniqueIdentifier>{978C79C7-0ADE-3007-95BC-F7FFAD42C862}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PostProcessing">
+      <UniqueIdentifier>{5BD40C64-9B07-34A3-A09D-DC09B19E353C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Q3BSP">
+      <UniqueIdentifier>{97B9A2BE-C522-3FD7-8BE9-87873C55828F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Q3D">
+      <UniqueIdentifier>{2962796A-12FB-3639-B95C-D9FABC2B6599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RAW">
+      <UniqueIdentifier>{E56AF1D0-D794-3A46-BE32-0D96F559D1E8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SIB">
+      <UniqueIdentifier>{E80F195E-608C-33B2-869B-6ED82D6B6D7F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SMD">
+      <UniqueIdentifier>{19BB7236-AE44-3484-8A9D-1EBBFEB6BE29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="STL">
+      <UniqueIdentifier>{0B172251-4F17-3031-8C46-C22F08577BC7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{35743207-4355-306F-9887-4D81F3E0578D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Step">
+      <UniqueIdentifier>{EF9AF9E2-6585-3077-903C-B9EF97455546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TERRAGEN">
+      <UniqueIdentifier>{7E45EBF1-3A1A-3607-BC48-0C7E6E84639A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="X">
+      <UniqueIdentifier>{E6CA1CC9-9BCE-32A5-B451-0E5019CF593B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="X3D">
+      <UniqueIdentifier>{0CEDDAC8-682A-3020-BA80-5666375DA8FD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="XGL">
+      <UniqueIdentifier>{2AD214A6-1144-3843-8DEE-9B59F97E8822}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="open3dgc">
+      <UniqueIdentifier>{6956A16E-1164-3FE7-AFF9-389611D7A2D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="openddl_parser">
+      <UniqueIdentifier>{C696D80B-1DEA-3A9C-AFF1-CA2CBB56A2CB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="unzip">
+      <UniqueIdentifier>{EC66692D-1614-3AE4-A794-8F7AD9ACFF82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ziplib">
+      <UniqueIdentifier>{C09E2312-F6FB-33D8-B619-A8C933434E7F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

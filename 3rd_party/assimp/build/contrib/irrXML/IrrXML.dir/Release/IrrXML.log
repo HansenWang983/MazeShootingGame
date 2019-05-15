@@ -1,0 +1,5 @@
+﻿  Building Custom Rule F:/Google Download/assimp-4.1.0/contrib/irrXML/CMakeLists.txt
+  CMake does not need to re-run because F:/Google Download/assimp-4.1.0/build/contrib/irrXML/CMakeFiles/generate.stamp is up-to-date.
+  irrXML.cpp
+f:\google download\assimp-4.1.0\contrib\irrxml\irrString.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  IrrXML.vcxproj -> F:\Google Download\assimp-4.1.0\build\contrib\irrXML\Release\IrrXML.lib

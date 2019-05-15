@@ -1,0 +1,5 @@
+# CMake generation dependency list for this directory.
+F:/Google Download/assimp-4.1.0/cmake-modules/FindRT.cmake
+F:/Google Download/assimp-4.1.0/code/CMakeLists.txt
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/FindPackageMessage.cmake

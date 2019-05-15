@@ -1,0 +1,9 @@
+# CMake generation dependency list for this directory.
+F:/Google Download/assimp-4.1.0/contrib/zlib/CMakeLists.txt
+F:/Google Download/assimp-4.1.0/contrib/zlib/zconf.h.cmakein
+F:/Google Download/assimp-4.1.0/contrib/zlib/zlib.pc.cmakein
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/CheckCSourceCompiles.cmake
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/CheckFunctionExists.cmake
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/CheckIncludeFile.cmake
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/CheckIncludeFileCXX.cmake
+F:/OpenGl/cmake-3.14.0-rc3-win64-x64/share/cmake-3.14/Modules/CheckTypeSize.cmake
