@@ -29,9 +29,9 @@
 
 - doc/ 存储项目文档，其中的 imgs 存放相关截图展示阶段性的效果。
 
-- include/  包括本地的头文件，引用自<https://github.com/JoeyDeVries/LearnOpenGL/tree/master/includes/learnopengl> 。
+- include/  包括本地的头文件，引用自<https://github.com/JoeyDeVries/LearnOpenGL/tree/master/includes/learnopengl>
 
-- resources/ 包括素材资源模型等文件，引用自 <https://github.com/JoeyDeVries/LearnOpenGL/tree/master/resources> 。
+- resources/ 包括素材资源模型等文件，引用自 <https://github.com/JoeyDeVries/LearnOpenGL/tree/master/resources>
 
 - src/ 包括源文件，其中 Shader/ 中为着色器文件。
 
@@ -43,9 +43,8 @@
 
 - 目前只支持 Windows 10 
 - `git clone https://github.com/hansenbeast/MazeShootingGame.git`
-- 在项目根目录下新建 build/，使用 Cmake-gui 生成 Visual Studio 解决方案
-- 将 `build/3rd_party/assimp/include/assimp`中的 `config.h` 移动到 `3rd_party/assimp/include/assimp` 中
-- 使用 VS 打开 `build/MazeShootingGame.sln`,将 MazeShootingGame 作为启动项目后，然后设置 build 属性为 Debug 和 Win32，最后生成解决方案，如果没问题的话，启动 `build/Debug` 中的 `MazeShootingGame.exe` 运行即可。
+- 在项目根目录下新建 build/，使用 Cmake-gui 生成 Visual Studio 解决方案（选择合适的 IDE 版本，我测试的是 Visual Studio 15 2017），**注意当 `configuration`完成后，将选项 `LIBRARY_SUFFIX` 的值置为空，最后进行 `generate`。**
+- 使用 VS 打开 `build/MazeShootingGame.sln`,将 MazeShootingGame 作为启动项目后，然后设置 build 属性为 Debug 和 Win32，最后生成解决方案，如果没问题的话，启动 `build/Debug` 中的 `MazeShootingGame.exe` 运行即可，或者直接编译运行。
 
 ------
 
@@ -64,7 +63,7 @@
 ## 协作说明
 
 1. 目前的第三方库只支持如上所列，如需使用其他的第三方库，则需要在 3rd_party 中加入源码，并更新 CmakeLists.txt（未使用预先编译好的库的原因是保证生成的库是兼容你的操作系统和CPU的 ，使用提供源代码所产生的一个问题在于不是每个人都用相同的IDE开发程序，因而提供的工程/解决方案文件可能和一些人的IDE不兼容），然后重新 Cmake 生成新的解决方案，这样才可以在源文件中引入头文件。
-2. 对于多人协作开发，由于邀请后每个成员都是仓库的合作者，注意每次 push 时，需要解决冲突，最好是每个人在自己的分支上开发，最后再 merge 到 master 分支。注意不需要将本地的 build/ 目录上传
+2. 对于多人协作开发，由于邀请后每个成员都是仓库的合作者，注意每次 push 时，需要解决冲突，最好是每个人在自己的分支上开发，最后再 merge 到 master 分支。注意不需要将本地的 build/ 目录上传（当然我在 .gitignore 文件中已经忽略 build/ 文件夹中的内容）
 3. 欢迎补充
 
 ------

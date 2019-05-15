@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.8 FATAL_ERROR) 
-project(FPS-game CXX)
+project(MazeShootingGame CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -48,13 +48,13 @@ LIST(APPEND LIBS assimp ${ASSIMP_LIBRARY})
 # include our headers
 include_directories(include)
 
-# get FPS-game src files
-aux_source_directory(./src FPS-game_SRC)
+# get MazeShootingGame src files
+aux_source_directory(./src MazeShootingGame_SRC)
 
-set(SOURCE_FILES ${FPS-game_SRC} ${GLAD_SRC})
+set(SOURCE_FILES ${MazeShootingGame_SRC} ${GLAD_SRC})
 
 # Compile
-add_executable(FPS-game ${SOURCE_FILES})
+add_executable(MazeShootingGame ${SOURCE_FILES})
 
 # Link
-target_link_libraries(FPS-game ${LIBS})
+target_link_libraries(MazeShootingGame ${LIBS})
