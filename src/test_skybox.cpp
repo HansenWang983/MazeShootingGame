@@ -5,12 +5,20 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "filesystem.h"
+
+#include "SkyBox.hpp"
+
 #include "shader_m.h"
 #include "camera.h"
-#include "model.h"
+#include "stb_image.h"
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include <fstream>
+using namespace std;
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -59,7 +67,7 @@ int main()
 	glfwSetScrollCallback(window, scroll_callback);
 
 	// tell GLFW to capture our mouse
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
@@ -73,25 +81,13 @@ int main()
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
 
-	// build and compile shaders
-	// -------------------------
-	Shader ourShader(FileSystem::getPath("src/Shader/model_loading.vs").c_str(), \
-		FileSystem::getPath("src/Shader/model_loading.fs").c_str());
-
-	// load models
-	// -----------
-	Model ourModel(FileSystem::getPath("resources/objects/nanosuit/nanosuit.obj"));
+	// 实例化SkyBox
+	SkyBox mySkyBox;
 
 
-	// draw in wireframe
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-	// render loop
-	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
-		// per-frame time logic
-		// --------------------
+	
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
@@ -105,22 +101,10 @@ int main()
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// don't forget to enable shader before setting uniforms
-		ourShader.use();
+		// 绘制
+		mySkyBox.render(camera);
 
-		// view/projection transformations
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", projection);
-		ourShader.setMat4("view", view);
-
-		// render the loaded model
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
-		ourShader.setMat4("model", model);
-		ourModel.Draw(ourShader);
-
+	
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
@@ -128,9 +112,12 @@ int main()
 		glfwPollEvents();
 	}
 
+	
 	// glfw: terminate, clearing all previously allocated GLFW resources.
 	// ------------------------------------------------------------------
 	glfwTerminate();
+
+
 	return 0;
 }
 
@@ -186,3 +173,4 @@ void scroll_callback(GLFWwindow * window, double xoffset, double yoffset)
 {
 	camera.ProcessMouseScroll(yoffset);
 }
+
