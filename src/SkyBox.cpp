@@ -2,7 +2,7 @@
 
 #define STB_IMAGE_IMPLEMENTATION   // use of stb functions once and for all
 #include "stb_image.h"
-
+#include "filesystem.h"
 // settings
 /*const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;*/
@@ -77,10 +77,10 @@ unsigned int SkyBox::loadCubemap(vector<std::string> faces)
 
 SkyBox::SkyBox() {
 	// 加载shader
-	skyboxShader = Shader("../src/Shader/skybox.vs", \
-		"../src/Shader/skybox.fs");
-	cubemapShader = Shader("../src/Shader/cubemap.vs", \
-		"../src/Shader/cubemap.fs");
+	skyboxShader = Shader(FileSystem::getPath("src/Shader/skybox.vs").c_str(), \
+		FileSystem::getPath("src/Shader/skybox.fs").c_str());
+	cubemapShader = Shader(FileSystem::getPath("src/Shader/cubemap.vs").c_str(), \
+		FileSystem::getPath("src/Shader/cubemap.fs").c_str());
 
 
 	// 数据
@@ -142,21 +142,21 @@ SkyBox::SkyBox() {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 
 	// load textures
-	//string path = FileSystem::getPath("resources/textures/container.jpg");
-	string path = "../resources/textures/container.jpg";
+	string path = FileSystem::getPath("resources/textures/container.jpg").c_str();
+	//string path = "../resources/textures/container.jpg";
 	cubeTexture = loadTexture(path);
 
-	/*vector<string> faces
-	{
-		FileSystem::getPath("resources/textures/skybox/right.jpg"),
-		FileSystem::getPath("resources/textures/skybox/left.jpg"),
-		FileSystem::getPath("resources/textures/skybox/top.jpg"),
-		FileSystem::getPath("resources/textures/skybox/bottom.jpg"),
-		FileSystem::getPath("resources/textures/skybox/front.jpg"),
-		FileSystem::getPath("resources/textures/skybox/back.jpg")
-	};*/
-
 	vector<string> faces
+	{
+		FileSystem::getPath("resources/textures/skybox/right.jpg").c_str(),
+		FileSystem::getPath("resources/textures/skybox/left.jpg").c_str(),
+		FileSystem::getPath("resources/textures/skybox/top.jpg").c_str(),
+		FileSystem::getPath("resources/textures/skybox/bottom.jpg").c_str(),
+		FileSystem::getPath("resources/textures/skybox/front.jpg").c_str(),
+		FileSystem::getPath("resources/textures/skybox/back.jpg").c_str()
+	};
+
+	/*vector<string> faces
 	{
 		"../resources/textures/skybox/right.jpg",
 		"../resources/textures/skybox/left.jpg",
@@ -164,7 +164,7 @@ SkyBox::SkyBox() {
 		"../resources/textures/skybox/bottom.jpg",
 		"../resources/textures/skybox/front.jpg",
 		"../resources/textures/skybox/back.jpg"
-	};
+	};*/
 
 	cubemapTexture = loadCubemap(faces);
 
