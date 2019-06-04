@@ -1,4 +1,4 @@
-﻿/*#include <glad/glad.h>
+﻿#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -11,7 +11,7 @@
 #include "shader_m.h"
 #include "camera.h"
 #include "stb_image.h"
-
+ 
 #include <iostream>
 #include <vector>
 #include <string>
@@ -173,4 +173,4 @@ void scroll_callback(GLFWwindow * window, double xoffset, double yoffset)
 {
 	camera.ProcessMouseScroll(yoffset);
 }
-*/
+

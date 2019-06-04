@@ -45,6 +45,11 @@ add_subdirectory(3rd_party/assimp)
 include_directories(3rd_party/assimp/include)
 LIST(APPEND LIBS assimp ${ASSIMP_LIBRARY})
 
+# config freetype 2.10
+add_subdirectory(3rd_party/freetype)
+include_directories(3rd_party/freetype/include)
+LIST(APPEND LIBS freetype ${FREETYPE_LIBRARIES})
+
 # include our headers
 include_directories(include)
 

@@ -36,3 +36,6 @@ build/
 
 # not include model.obj file
 !/resources/**/*.obj
+
+.vs/*
+.vscode/*
