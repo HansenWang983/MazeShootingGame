@@ -1,10 +1,12 @@
-﻿/*#include <glad/glad.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+// 文字
+#include "Text.h"
 
 #include "SkyBox.hpp"
 
@@ -16,6 +18,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <map>
 using namespace std;
 
 
@@ -66,6 +69,7 @@ int main()
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
 
+	
 	// tell GLFW to capture our mouse
 	//glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
@@ -81,13 +85,21 @@ int main()
 	// -----------------------------
 	glEnable(GL_DEPTH_TEST);
 
+	// Set OpenGL options 字体
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
 	// 实例化SkyBox
 	SkyBox mySkyBox;
+
+	Text myText;
 
 
 	while (!glfwWindowShouldClose(window))
 	{
-	
+
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
@@ -101,10 +113,14 @@ int main()
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// 绘制
+		// 绘制天空盒
 		mySkyBox.render(camera);
 
-	
+		// 绘制字体
+		myText.RenderText("This is sample text", 55.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		
+
+
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
@@ -112,7 +128,7 @@ int main()
 		glfwPollEvents();
 	}
 
-	
+
 	// glfw: terminate, clearing all previously allocated GLFW resources.
 	// ------------------------------------------------------------------
 	glfwTerminate();
@@ -173,4 +189,5 @@ void scroll_callback(GLFWwindow * window, double xoffset, double yoffset)
 {
 	camera.ProcessMouseScroll(yoffset);
 }
-*/
+
+
