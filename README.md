@@ -4,6 +4,11 @@
 
 ------
 
+## 开发记录
+
+- skybox 
+- text
+
 
 
 ## 文件目录
@@ -13,6 +18,7 @@
   ```
   3rd_party/
   ----assimp/ 
+  ----freetype/
   ----glad/
   ----glfw/
   ----glm/
@@ -21,6 +27,7 @@
   版本分别为
 
   - assimp-4.1.0
+  - freetype-2.10.0
   - [glad](https://glad.dav1d.de/)（Language 设置为 **C/C++**，在API选项中，选择 **3.3** 以上的 OpenGL(gl) 版本，模式 (Profile) 设置为**Core**，并且选中**生成加载器** (Generate a loader) 选项 ）
   - glfw-3.3.bin.WIN32
   - glm-0.9.8.5
@@ -29,9 +36,9 @@
 
 - doc/ 存储项目文档，其中的 imgs 存放相关截图展示阶段性的效果。
 
-- include/  包括本地的头文件，引用自<https://github.com/JoeyDeVries/LearnOpenGL/tree/master/includes/learnopengl>
+- include/  包括本地的头文件，部分引用自<https://github.com/JoeyDeVries/LearnOpenGL/tree/master/includes/learnopengl>
 
-- resources/ 包括素材资源模型等文件，引用自 <https://github.com/JoeyDeVries/LearnOpenGL/tree/master/resources>
+- resources/ 包括贴图模型等资源文件，部分引用自 <https://github.com/JoeyDeVries/LearnOpenGL/tree/master/resources>
 
 - src/ 包括源文件，其中 Shader/ 中为着色器文件。
 
@@ -70,9 +77,9 @@
 
 
 
-## 模块记录
+## 模块要求
 
-> 使用OpenGL进行开发，对使用的库不做限制(包括物理引擎库、图像处理库、动画库等)。但需要实现以下知识点(注意将知识点有机结合，而非简单堆凑)：    
+> 使用 OpenGL 进行开发，对使用的库不做限制(包括物理引擎库、图像处理库、动画库等)。但需要实现以下知识点(注意将知识点有机结合，而非简单堆凑)：    
 
 ### Basic
 

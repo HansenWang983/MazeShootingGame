@@ -2,6 +2,10 @@
 #include "filesystem.h"
 
 Text::Text() {
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	// Shader
 	textShader = Shader(FileSystem::getPath("src/Shader/font.vs").c_str(), FileSystem::getPath("src/Shader/font.fs").c_str());
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
@@ -96,11 +100,14 @@ Text::Text() {
 	// 正交投影矩阵
 	//glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
-
-
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_BLEND);
 }
 
 void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color) {
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_BLEND);
+
 	//  激活合适的渲染状态
 	textShader.use();
 	glUniform3f(glGetUniformLocation(textShader.ID, "textColor"), color.x, color.y, color.z);
@@ -148,4 +155,7 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 	}
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
+
+	glDisable(GL_CULL_FACE);
+	glDisable(GL_BLEND);
 }
