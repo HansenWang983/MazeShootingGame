@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.8 FATAL_ERROR) 
-project(MazeShootingGame CXX)
+project(MazeShootingGame2 CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -30,12 +30,17 @@ add_subdirectory(3rd_party/glfw)
 include_directories(3rd_party/glfw/include)
 LIST(APPEND LIBS glfw ${GLFW_LIBRARIES})
 
-# config glad
-set(GLAD_SRC 3rd_party/glad/src/glad.c)
+# config glew
+set(GLEW_SRC ../3rd_party/glew/src/glew.c)
 if (NOT WIN32)
     LIST(APPEND LIBS dl)
 endif()
-include_directories(3rd_party/glad/include)
+include_directories(3rd_party/glew/include)
+
+link_directories(3rd_party/glew/lib) #....
+#LIST(APPEND LIBS glew32s 3rd_party/glew/lib/glew32s) #...
+LIST(APPEND LIBS glew32s) #...
+
 
 # config glm
 include_directories(3rd_party/glm)
@@ -45,21 +50,16 @@ add_subdirectory(3rd_party/assimp)
 include_directories(3rd_party/assimp/include)
 LIST(APPEND LIBS assimp ${ASSIMP_LIBRARY})
 
-# config freetype 2.10
-add_subdirectory(3rd_party/freetype)
-include_directories(3rd_party/freetype/include)
-LIST(APPEND LIBS freetype ${FREETYPE_LIBRARIES})
-
 # include our headers
 include_directories(include)
 
 # get MazeShootingGame src files
 aux_source_directory(./src MazeShootingGame_SRC)
 
-set(SOURCE_FILES ${MazeShootingGame_SRC} ${GLAD_SRC})
+set(SOURCE_FILES ${MazeShootingGame_SRC} ${GLEW_SRC})
 
 # Compile
-add_executable(MazeShootingGame ${SOURCE_FILES})
+add_executable(MazeShootingGame2 ${SOURCE_FILES})
 
 # Link
-target_link_libraries(MazeShootingGame ${LIBS})
+target_link_libraries(MazeShootingGame2 ${LIBS})
