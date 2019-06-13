@@ -77,6 +77,7 @@ void Application::initWindow(){
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void Application::start(GamePtr game){
@@ -92,6 +93,7 @@ void Application::startLoop(){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		update();
 		render();
+		glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		glfwSwapBuffers(_window);
 		glfwPollEvents();
 		//if shutdown then break the loop

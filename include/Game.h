@@ -21,8 +21,9 @@ namespace GXProject{
 		Skybox sky;
 		Ground* _ground;
 		Ground* _walls;
-
-
+    	unsigned int _texture;
+    	unsigned int _VBO, _VAO;
+		ShaderPtr _centerShader;
 		//
 		CMD2Model mymodel;
 		animState_t model_anim_state;
@@ -48,6 +49,7 @@ namespace GXProject{
 		void MonsterAI();
 		void setupGround(int x, int y,ShaderPtr shdr,MeshPtr msh);
 		void setupShaderUniforms(ShaderPtr shdr);
+		void setupCenter();
 		void update(double delta);
 		void render();
 		void cameraMouseMovement(int x, int y);

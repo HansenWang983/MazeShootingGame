@@ -1,3 +1,4 @@
+#include <stb_image.h>
 #include"Game.h"
 #include "Geometry.h"
 #include "Application.h"
@@ -22,12 +23,13 @@ Game::Game(){
 
 	sky.setShader(_skyboxShader);
 
+	setupCenter();
 	
 	//setupGround(10,10,nullptr,nullptr);
 	_ground = new Ground(20,20);
 	_walls = Ground::loadFile("../res/defaultMaze.txt");
-
-
+	
+	
 	playerLight.position = camera.getPosition();
 	Monsterlight.intensity = 1;
 	Monsterlight.color = vec3(1,0,0);
@@ -106,8 +108,7 @@ void Game::update(double delta){
 	playerLight.position = camera.getPosition();
 	cout<<playerLight.position.x<<" | "<<playerLight.position.y<<" | "<< playerLight.position.z<<endl;
 	//cout<<_walls->Collide(playerLight.position)<<endl;
-
-
+	
 	mymodel.UpdateAnimation(&model_anim_state,delta / 1000);
 	MonsterAI();
 	auto mmx = glm::rotate(monsterRotate.x,vec3(1,0,0));
@@ -143,12 +144,24 @@ void Game::render(){
 		//end of the lights
 		obj.second->draw(VP);
 	}
+
 	_ground->draw(VP);
 	_walls->draw(VP);
 
+	// render aiming center 
+	_centerShader->bind();
+	//  bind Texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D,_texture);
+	
+	// draw aiming cente
+	glEnable(GL_BLEND);
+	glBindVertexArray(_VAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glDisable(GL_BLEND);
 
 	//
-		animatedModelShader.UseProgram();
+	animatedModelShader.UseProgram();
 	animatedModelShader.BindVPMatrix(&VP[0][0]); //need vp matrix to render model in..
 
 	animatedModelShader.BindModelMatrix(&model_m[0][0]); //need model matrix itself..
@@ -304,4 +317,74 @@ void Game::cameraMouseMovement(int x, int y){
 		mousePosition.y = windowSize.y/2;
 		Application::get()->setMousePosition(mousePosition.x,mousePosition.y);
 	}
+}
+
+
+void Game::setupCenter(){
+	float center_vertices[] = {
+        // positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
+        -0.1f,  0.1f,  0.0f,  0.0f,  0.0f,
+        -0.1f, -0.1f,  0.0f,  0.0f,  1.0f,
+         0.1f, -0.1f,  0.0f,  1.0f,  1.0f,
+
+        -0.1f,  0.1f,  0.0f,  0.0f,  0.0f,
+         0.1f, -0.1f,  0.0f,  1.0f,  1.0f,
+         0.1f,  0.1f,  0.0f,  1.0f,  0.0f
+    };
+
+    glGenVertexArrays(1, &_VAO);
+    glGenBuffers(1, &_VBO);
+
+    glBindVertexArray(_VAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, _VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(center_vertices), center_vertices, GL_STATIC_DRAW);
+
+    // position attribute
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    // texture coord attribute
+	glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glBindVertexArray(0);
+
+    // load and create a texture 
+    // -------------------------
+	glGenTextures(1, &_texture);
+
+    int width, height, nrComponents;
+    unsigned char *data = stbi_load("../res/textures/center.png", &width, &height, &nrComponents, 0);
+    if (data)
+    {
+        GLenum format;
+        if (nrComponents == 1)
+            format = GL_RED;
+        else if (nrComponents == 3)
+            format = GL_RGB;
+        else if (nrComponents == 4)
+            format = GL_RGBA;
+
+		glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, _texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+        glGenerateMipmap(GL_TEXTURE_2D);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT); // for this tutorial: use GL_CLAMP_TO_EDGE to prevent semi-transparent borders. Due to interpolation it takes texels from next repeat 
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        stbi_image_free(data);
+		glBindTexture(GL_TEXTURE_2D, 0);
+    }
+    else
+    {
+        std::cout << "Texture failed to load at path: " << std::endl;
+        stbi_image_free(data);
+    }
+
+	// set shader of aming center 
+	_centerShader = std::make_shared<Shader>("../src/Shaders/center.vertexshader", "../src/Shaders/center.fragmentshader");
+	_centerShader->bind();
+	_centerShader->setUniform("centerTxc", 0);
 }
