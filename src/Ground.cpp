@@ -100,18 +100,21 @@ void Ground::draw(glm::mat4 vp,int is_Instancing)
 }
 
 bool Ground::Collide(vec3 pos){
-	pos += vec3(1,0,1);
+	vec3 pos1 = pos + vec3(0.8,0,0.8);
+	vec3 pos2 = pos + vec3(1.2, 0, 1.2);
 	if(maze != NULL){
-		int x = pos.x;
-		int y = pos.z;
+		int x1 = pos1.x;
+		int y1 = pos1.z;
+		int x2 = pos2.x;
+		int y2 = pos2.z;
 
-		if(x>=this->x || x<0)
+		if(x1>=this->x || x1<0)
 			return false;
 
-		if(y>=this->y || y<0)
+		if(y1>=this->y || y1<0)
 			return false;
 
-		if(maze[x][y] == '#')
+		if(maze[x1][y1] == '#' || maze[x2][y2] == '#')
 			return true;
 		else
 			return false;

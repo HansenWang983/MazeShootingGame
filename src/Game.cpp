@@ -47,7 +47,7 @@ Game::Game(){
 	playerLight.color = vec3(1,1,1);
 	FireLight.position = vec3(17.9, 2.0, 18.7);
 	FireLight.intensity = 1;
-	FireLight.color = vec3(1,0, 0);
+	FireLight.color = vec3(1,1, 0);
 
 	monsterPosition = vec3(2.25,1.6,15.4);
 	monsterPosTarget = monsterPosition;
