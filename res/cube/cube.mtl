@@ -12,5 +12,5 @@ newmtl Material__25
 	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Kd stoneWall.png
-    map_bump stoneWall_NRM.png
+	map_Kd bricks2.jpg
+    map_bump bricks2_normal.jpg
