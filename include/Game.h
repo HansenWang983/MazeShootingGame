@@ -11,6 +11,7 @@
 #include "PointLight.h"
 #include "Ground.h"
 #include "md2model.h"
+#include "Snow.h"
 
 namespace GXProject{
 	class Game{
@@ -21,7 +22,8 @@ namespace GXProject{
 		Skybox sky;
 		Ground* _ground;
 		Ground* _walls;
-
+		Snow::Snow snow;
+		Cube finalCube;
 
 		//
 		CMD2Model mymodel;
@@ -36,7 +38,7 @@ namespace GXProject{
 		//
 
 
-		PointLight playerLight, Monsterlight;
+		PointLight playerLight, Monsterlight, FireLight;
 		glm::vec2 mousePosition;
 		bool _turnOnMouseCamera;
 		bool _debugMode;

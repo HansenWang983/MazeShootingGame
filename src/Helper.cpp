@@ -47,7 +47,7 @@ MeshPtr Helper::loadMesh(std::string path){
 			const aiVector3D* pTexCoord = mesh->HasTextureCoords(0)? &(mesh->mTextureCoords[0][i]):&Zero3D;
 			const aiVector3D* pTangent = mesh->HasTangentsAndBitangents()? &(mesh->mTangents[i]):&Zero3D;
 
-			cout<<pTangent->x<<" | "<<pTangent->y<<" | "<<pTangent->z<<endl;
+			//cout<<pTangent->x<<" | "<<pTangent->y<<" | "<<pTangent->z<<endl;
 
 			glm::vec3 pos = glm::vec3(pPos->x,pPos->y,pPos->z);
 			glm::vec3 norm = glm::vec3(pNormal->x,pNormal->y,pNormal->z);

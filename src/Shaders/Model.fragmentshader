@@ -25,6 +25,10 @@ uniform vec3 monsterLightPosition;
 uniform vec3 monsterLightColor;
 uniform float monsterLightIntensity;
 
+uniform vec3 fireLightPosition;
+uniform vec3 fireLightColor;
+uniform float fireLightIntensity;
+
 struct lightComponent{
 	vec3 ambientLight,diffuseLight,specularLight;	
 };
@@ -89,9 +93,11 @@ void main(){
 
     lightComponent monsterLight = calcPointLight(monsterLightPosition, monsterLightColor,monsterLightIntensity);
 
-    ambientLight = playerLight.ambientLight + monsterLight.ambientLight;
-    diffuseLight = playerLight.diffuseLight + monsterLight.diffuseLight;
-    specularLight = playerLight.specularLight + monsterLight.specularLight;
+    lightComponent fireLight = calcPointLight(fireLightPosition, fireLightColor,fireLightIntensity);
+
+    ambientLight = playerLight.ambientLight + monsterLight.ambientLight + fireLight.ambientLight;
+    diffuseLight = playerLight.diffuseLight + monsterLight.diffuseLight + fireLight.diffuseLight;
+    specularLight = playerLight.specularLight + monsterLight.specularLight + fireLight.specularLight;
 
     vec3 finalLight = ambientLight + diffuseLight + specularLight;
     //finalLight = clamp(finalLight,0,1);

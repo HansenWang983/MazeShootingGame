@@ -7,6 +7,7 @@ namespace GXProject{
 	class Shader{
 	public:
 		Shader(std::string vertex,std::string fragment);
+		Shader(const GLchar * vertexPath, const GLchar * fragmentPath, const GLchar * geometryPath, const GLchar * varyings[], int count);
 		~Shader();
 		void bind();
 		void setUniform(std::string,int);

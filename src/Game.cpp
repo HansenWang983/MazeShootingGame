@@ -20,12 +20,19 @@ Game::Game(){
 
 	auto _skyboxShader = std::make_shared<Shader>("../src/Shaders/Skybox.vertexshader", "../src/Shaders/Skybox.fragmentshader");
 
+	auto meshTest = Helper::loadMesh("../res/cube/cube.obj");
+
 	sky.setShader(_skyboxShader);
 
 	
 	//setupGround(10,10,nullptr,nullptr);
 	_ground = new Ground(20,20);
 	_walls = Ground::loadFile("../res/defaultMaze.txt");
+
+	meshTest->setShader(_genericShader);
+	finalCube._cube->position = vec3(17.7, 0.7, 18.7);
+	finalCube._cube->scale = vec3(0.5, 0.5, 0.5);
+	finalCube._cube->mesh = meshTest;
 
 
 	playerLight.position = camera.getPosition();
@@ -34,6 +41,9 @@ Game::Game(){
 	Monsterlight.position = vec3(0,3,0);
 	playerLight.intensity = 1;
 	playerLight.color = vec3(1,1,1);
+	FireLight.position = vec3(17.9, 2.0, 18.7);
+	FireLight.intensity = 1;
+	FireLight.color = vec3(1,0, 0);
 
 	monsterPosition = vec3(2.25,1.6,15.4);
 	monsterPosTarget = monsterPosition;
@@ -95,6 +105,10 @@ void Game::setupShaderUniforms(ShaderPtr shdr)
 		shdr->setUniform("monsterLightColor",Monsterlight.color);
 		shdr->setUniform("monsterLightIntensity",Monsterlight.intensity);
 
+		shdr->setUniform("fireLightPosition", FireLight.position);
+		shdr->setUniform("fireLightColor", FireLight.color);
+		shdr->setUniform("fireLightIntensity", FireLight.intensity);
+
 }
 
 void Game::update(double delta){
@@ -115,6 +129,13 @@ void Game::update(double delta){
 	auto mmz = glm::rotate(monsterRotate.z,vec3(0,0,1));
 	auto mmr = mmx*mmy*mmz;
 	model_m = glm::translate(monsterPosition) * mmr * glm::scale(vec3(0.025f,0.025f,0.025f));
+
+	glm::mat4 projection(1.0f);
+	glm::mat4 model(1.0f);
+	glm::mat4 view = camera.getViewMatrix();
+	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600, 0.1f, 2000.f);
+	//floor.render(model,view,projection);
+	//snow.Render(delta, model, view, projection);
 }
 
 void Game::render(){
@@ -139,12 +160,17 @@ void Game::render(){
 		objShader->setUniform("monsterLightColor",Monsterlight.color);
 		objShader->setUniform("monsterLightIntensity",Monsterlight.intensity);
 
+		objShader->setUniform("fireLightPosition", FireLight.position);
+		objShader->setUniform("fireLightColor", FireLight.color);
+		objShader->setUniform("fireLightIntensity", FireLight.intensity);
+
 		//probably we can do it once for all objects but who cares it's a college project anyway.
 		//end of the lights
 		obj.second->draw(VP);
 	}
 	_ground->draw(VP);
 	_walls->draw(VP);
+	finalCube._cube->draw(VP);
 
 
 	//
@@ -154,6 +180,8 @@ void Game::render(){
 	animatedModelShader.BindModelMatrix(&model_m[0][0]); //need model matrix itself..
 
 	mymodel.RenderModel(&model_anim_state,&animatedModelShader);
+
+	
 
 
 
