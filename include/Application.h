@@ -26,6 +26,7 @@ namespace GXProject{
 		glm::vec2 _mousePos;
 		//boolean for shutdown
 		bool _shutdown;
+		bool _endGame;
 		/*!
 		 * \function bool initWindow()
 		 *
@@ -92,6 +93,7 @@ namespace GXProject{
 		glm::vec2 getWindowSize();
 		//handle shutdown
 		void shutdown();
+		void endGame();
 	};
 	typedef std::shared_ptr<Application> ApplicationPtr;
 }
