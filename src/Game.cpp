@@ -10,6 +10,9 @@ using namespace GXProject;
 using namespace std;
 using namespace glm;
 
+#define SHADOW_WIDTH 1024
+#define SHADOW_HEIGHT 1024
+
 const int nx = 256;
 const int ny = 256;
 
@@ -20,7 +23,7 @@ float vorticity = 10.0f;
 glm::vec3 position_, rotation_, scale_;
 
 Fire myFire(nx, ny, dt, iterations, vorticity);
-
+Shadow myShadow;
 
 MeshPtr _mesh;
 Game::Game(){
@@ -30,6 +33,7 @@ Game::Game(){
 	
 	/// fire (fluid simulation)
 	myFire.init();
+	myShadow.init();
 
 	_genericShader = std::make_shared<Shader>("../src/Shaders/Model.vertexshader", "../src/Shaders/Model.fragmentshader");
 
@@ -41,7 +45,7 @@ Game::Game(){
 	sky.setShader(_skyboxShader);
 
 	setupCenter();
-	setupText();
+
 	
 	//setupGround(10,10,nullptr,nullptr);
 	_ground = new Ground(20,20);
@@ -75,7 +79,8 @@ Game::Game(){
 	model_m = glm::translate(monsterPosition) * glm::rotate(-90.0f,vec3(1.0f,0.0f,0.0f)) *glm::rotate(180.0f,vec3(0.0f,0.0f,1.0f)) * glm::scale(vec3(0.025f,0.025f,0.025f));
 
 	//load model file..
-    mymodel.LoadModel("../res/drfreak/drfreak.md2");
+	mymodel.LoadModel("../res/0-MD2model/s0/s0/tris.MD2");
+ 
 
 	//set curent animation to play..
 	model_anim_state = mymodel.StartAnimation(animType_t::CROUCH_WALK);
@@ -85,7 +90,11 @@ Game::Game(){
 
 	_debugMode = false;
 	//camera.Reset(vec3(0),vec3(-0.2,4.8,15.6),vec3(0,1,0));
-	camera.setPosition(vec3(0.5,1.76,0.5));
+	//camera.setPosition(vec3(16.5284, 2.76, 17.7648));
+	//camera.setPosition(vec3(17.5407, 1.76, 17.7923));
+	camera.setPosition(vec3(0.5, 1.76, 0.5)); // -> 起点
+
+	_simpleDepthShader = std::make_shared<Shader>("../src/Shaders/simpleDepthShader.vs", "../src/Shaders/simpleDepthShader.fs");
 
 
 }
@@ -94,6 +103,7 @@ Game::~Game(){
 	delete _ground;
 	delete _walls;
 }
+
 //here for test purposes
 void Game::setupGround(int x, int y, ShaderPtr shdr, MeshPtr msh)
 {
@@ -164,6 +174,21 @@ void Game::update(double delta){
 }
 
 void Game::render(){
+	glm::vec3 new_pos = vec3(17.7, 2.7, 18.7);
+	//position_ = vec3(2.10359, 1.76, 0.562899);
+	glm::vec3 new_rot = glm::vec3(0);
+	glm::vec3 new_scl = glm::vec3(0.5, 0.5, 0.5);
+	glm::mat4 newCubeMatrix = getModel(new_pos, new_rot, new_scl);
+
+	new_pos = vec3(17.7, 0.7, 18.7);
+	//position_ = vec3(2.10359, 1.76, 0.562899);
+	new_rot = glm::vec3(0);
+	new_scl = glm::vec3(0.5, 0.5, 0.5);
+	glm::mat4 newFloorMatrix = getModel(new_pos, new_rot, new_scl);
+
+	glEnable(GL_BLEND);
+	//myShadow.render(newFloorMatrix, newCubeMatrix, camera);
+	glDisable(GL_BLEND);
 	
 	//cout<<"render"<<endl;
 	glm::mat4 VP = camera.getProjectionMatrix()*camera.getViewMatrix();
@@ -198,6 +223,8 @@ void Game::render(){
 	_ground->draw(VP);
 	_walls->draw(VP);
 	finalCube._cube->draw(VP);
+
+
 	
 	// render aiming center 
 	_centerShader->bind();
@@ -222,10 +249,14 @@ void Game::render(){
 	mymodel.RenderModel(&model_anim_state,&animatedModelShader);
 
 	// Fire position (fluid simulation)
-	position_ = vec3(17.9, 2.0, 18.7);
+	//position_ = vec3(17.9, 2.0, 18.7);
+	//position_ = vec3(16.5284, 2.76, 17.7648);
+	position_ = vec3(18.9907, 3.76, 18.6);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
 	rotation_ = glm::vec3(0);
 	scale_ = glm::vec3(2.5, 2.5, 2.5);
+	// scale -> 2.5
+	// pos -> position_ = vec3(18.9907, 3.76, 18.6);
 
 	glm::mat4 fmodel = getModel(position_, rotation_, scale_);
 	cout << "fmodel " << fmodel[0][0] << endl;
@@ -239,6 +270,13 @@ void Game::render(){
 	glBindVertexArray(_VAO);
 	myFire.on_frame(_fireShader, camera);
 	glDisable(GL_BLEND);
+
+	
+
+
+}
+
+void Game::renderAll() {
 	
 
 }
@@ -463,129 +501,6 @@ void Game::setupCenter(){
 	
 }
 
-// something wrong
-void Game::setupText() {
-	FT_Library ft;
-	if (FT_Init_FreeType(&ft))
-		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
-
-	FT_Face face;
-	if (FT_New_Face(ft, "arial.ttf", 0, &face))
-		std::cout << "ERROR::FREETYPE: Failed to load font" << std::endl;
-
-	FT_Set_Pixel_Sizes(face, 0, 48);
-
-	if (FT_Load_Char(face, 'X', FT_LOAD_RENDER))
-		std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
-
-	
-
-
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); //禁用byte-alignment限制
-	for (GLubyte c = 0; c < 128; c++)
-	{
-		// 加载字符的字形 
-		if (FT_Load_Char(face, c, FT_LOAD_RENDER))
-		{
-			std::cout << "ERROR::FREETYTPE: Failed to load Glyph" << std::endl;
-			continue;
-		}
-		// 生成字形纹理
-		GLuint texture;
-		glGenTextures(1, &texture);
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glTexImage2D(
-			GL_TEXTURE_2D,
-			0,
-			GL_RED,
-			face->glyph->bitmap.width,
-			face->glyph->bitmap.rows,
-			0,
-			GL_RED,
-			GL_UNSIGNED_BYTE,
-			face->glyph->bitmap.buffer
-		);
-		// 设置纹理选项
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		// 将字符存储到字符表中备用
-		Character character = {
-			texture,
-			glm::ivec2(face->glyph->bitmap.width, face->glyph->bitmap.rows),
-			glm::ivec2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-			face->glyph->advance.x
-		};
-		Characters.insert(std::pair<GLchar, Character>(c, character));
-	}
-
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-
-	FT_Done_Face(face);
-	FT_Done_FreeType(ft);
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
-
-	GLuint VAO, VBO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 6 * 4, NULL, GL_DYNAMIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-}
-
-void Game::RenderText(ShaderPtr s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color)
-{
-	// 激活合适的渲染状态
-	s->bind();
-	s->setUniform("textColor", color);
-	//glUniform3f(glGetUniformLocation(s.Program, "textColor"), color.x, color.y, color.z);
-	glActiveTexture(GL_TEXTURE0);
-	glBindVertexArray(_VAO_text);
-
-	// 对文本中的所有字符迭代
-	std::string::const_iterator c;
-	for (c = text.begin(); c != text.end(); c++)
-	{
-		Character ch = Characters[*c];
-
-		GLfloat xpos = x + ch.Bearing.x * scale;
-		GLfloat ypos = y - (ch.Size.y - ch.Bearing.y) * scale;
-
-		GLfloat w = ch.Size.x * scale;
-		GLfloat h = ch.Size.y * scale;
-		// 当前字符的VBO
-		GLfloat vertices[6][4] = {
-			{ xpos,     ypos + h,   0.0, 0.0 },
-			{ xpos,     ypos,       0.0, 1.0 },
-			{ xpos + w, ypos,       1.0, 1.0 },
-
-			{ xpos,     ypos + h,   0.0, 0.0 },
-			{ xpos + w, ypos,       1.0, 1.0 },
-			{ xpos + w, ypos + h,   1.0, 0.0 }
-		};
-		// 在方块上绘制字形纹理
-		glBindTexture(GL_TEXTURE_2D, ch.TextureID);
-		// 更新当前字符的VBO
-		glBindBuffer(GL_ARRAY_BUFFER, _VBO_text);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		// 绘制方块
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-		// 更新位置到下一个字形的原点，注意单位是1/64像素
-		x += (ch.Advance >> 6) * scale; //(2^6 = 64)
-	}
-	glBindVertexArray(0);
-	glBindTexture(GL_TEXTURE_2D, 0);
-}
 
 // get the model matrix
 glm::mat4 Game::getModel(glm::vec3 position = glm::vec3(0), glm::vec3 rotation = glm::vec3(0), glm::vec3 scale = glm::vec3(1)) {
@@ -597,4 +512,28 @@ glm::mat4 Game::getModel(glm::vec3 position = glm::vec3(0), glm::vec3 rotation =
 	glm::mat4 sclMat = glm::scale(glm::mat4(1), scale);
 
 	return tm * grot* sclMat;
+}
+
+void Game::setupShadow() {
+	glGenFramebuffers(1, &_depthMapFBO);
+	glGenTextures(1, &_depthMap);
+	glBindTexture(GL_TEXTURE_2D, _depthMap);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
+	
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+
+	GLfloat borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
+	glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+	// attach depth texture as FBO's depth buffer
+	glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _depthMap, 0);
+	glDrawBuffer(GL_NONE);
+	glReadBuffer(GL_NONE);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
 }

@@ -15,6 +15,7 @@
 #include "Snow.h"
 #include "Fire.h"
 #include "FireShader.h"
+#include "Shadow.h"
 
 ///////text
 #include <ft2build.h>
@@ -54,6 +55,12 @@ namespace GXProject{
 		// fire
 		ShaderPtr _fireShader;
 
+		// shadow
+		ShaderPtr _simpleDepthShader;
+		ShaderPtr _shadowShader;
+		unsigned int _depthMapFBO;
+		unsigned int _depthMap;
+
 		//
 		CMD2Model mymodel;
 		animState_t model_anim_state;
@@ -88,8 +95,10 @@ namespace GXProject{
 		void setupGround(int x, int y,ShaderPtr shdr,MeshPtr msh);
 		void setupShaderUniforms(ShaderPtr shdr);
 		void setupCenter();
+		void setupShadow();
 		void update(double delta);
 		void render();
+		void renderAll();
 		void cameraMouseMovement(int x, int y);
 		// get model matrix
 		glm::mat4 getModel(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
@@ -103,10 +112,7 @@ namespace GXProject{
 
 		////文字部分
 		
-		std::map<GLchar, Character> Characters;
-		void setupText();
-		void RenderText(ShaderPtr s, std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
-
+		
 	};
 	typedef std::shared_ptr<Game> GamePtr;
 }
