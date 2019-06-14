@@ -1,6 +1,6 @@
 ﻿#ifndef _TEXT_H_
 #define _TEXT_H_
-#include <glad/glad.h>
+#include<GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -11,14 +11,16 @@
 #include FT_FREETYPE_H
 
 
-#include "shader_m.h"
-#include "camera.h"
+//#include "shader_m.h"
+//#include "camera.h"
+
+#include "Shader.h"
 
 
 #include <iostream>
 #include <map>
 using namespace std;
-
+using namespace GXProject;
 struct Character {
 	GLuint TextureID;  // 字形纹理ID
 	glm::ivec2 Size;   // 字形大小

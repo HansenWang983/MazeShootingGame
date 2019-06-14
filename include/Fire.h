@@ -1,4 +1,4 @@
-﻿#include <glad/glad.h>
+﻿#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -6,9 +6,11 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-#include "shader_m.h"
-#include "camera.h"
+//#include "shader_m.h"
+//#include "camera.h"
 
+#include "Shader.h"
+#include "EulerCamera.h"
 
 #include <iostream>
 #include <assert.h>
@@ -18,7 +20,7 @@
 #include <math.h>
 #include <algorithm>
 using namespace std;
-
+using namespace GXProject;
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -88,7 +90,8 @@ public:
 	void advect_velocity();
 	void advect_density();
 	void project_velocity();
-	void on_frame(Shader fluidShader, Camera& camera);
+	void on_frame(ShaderPtr fluidShader, EulerCamera& camera);
+	//void on_frame(Shader fluidShader, Camera& camera);
 	void init();
 	void fluid_simulation_step();
 	void vorticity_confinement();
@@ -100,12 +103,12 @@ public:
 	int ny;
 
 private:
-	
+
 	float dt;
 	float iterations;
 	float vorticity;
 
-	
+
 
 	GLuint texture;
 

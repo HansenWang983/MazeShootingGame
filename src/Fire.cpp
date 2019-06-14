@@ -89,7 +89,7 @@ float length(glm::vec2 a) {
 
 
 //===========================================
-Fire::Fire(int nx, int ny, float dt, float iterations, float vorticity):nx(nx),ny(ny),dt(dt),iterations(iterations),vorticity(vorticity) {
+Fire::Fire(int nx, int ny, float dt, float iterations, float vorticity) :nx(nx), ny(ny), dt(dt), iterations(iterations), vorticity(vorticity) {
 
 	Grid<glm::vec2> old_velocity_tmp(nx, ny);
 	Grid<glm::vec2> new_velocity_tmp(nx, ny);
@@ -172,13 +172,13 @@ void Fire::project_velocity() {
 	}
 }
 
-void Fire::on_frame(Shader fluidShader, Camera& camera) {
-
+//void Fire::on_frame(Shader fluidShader, Camera& camera) {
+void Fire::on_frame(ShaderPtr fluidShader, EulerCamera & camera) {
 
 	fluid_simulation_step();
 
 	double t = sec();
-
+	cout << "t " << t << endl;
 	// density field to pixels
 	FOR_EACH_CELL{
 		float rf = old_density(x, y);
@@ -215,23 +215,40 @@ void Fire::on_frame(Shader fluidShader, Camera& camera) {
 
 
 	//................
-	fluidShader.use();
-	glm::mat4 model = glm::mat4(1.0f);
-	glm::mat4 view = camera.GetViewMatrix();
+	fluidShader->bind();
+	//glm::mat4 model = glm::mat4(1.0f);
+	//glm::mat4 view = camera.getViewMatrix();
+
 
 	//glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT), 0.1f, 100.0f);
-	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-	fluidShader.setMat4("model", model);
+	// origin
+	//glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+	// using new camera
+	
+	//glm::mat4 projection = camera.getProjectionMatrix();
+
+	// origin
+	/*fluidShader.setMat4("model", model);
 	fluidShader.setMat4("view", view);
-	fluidShader.setMat4("projection", projection);
+	fluidShader.setMat4("projection", projection);*/
+
+	//fluidShader->setUniform("model", model);
+	//fluidShader->setUniform("view", view);
+	//fluidShader->setUniform("projection", projection);
+
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, nx, ny, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
 	//glTexImage2D(GL_TEXTURE_2D, 0, 0, 0, nx, ny, GL_RGBA, GL_UNSIGNED_BYTE, pixels.data());
-	glUniform1i(glGetUniformLocation(fluidShader.ID, "ourTexture"), 0);
+	// origin
+	//glUniform1i(glGetUniformLocation(fluidShader.ID, "ourTexture"), 0);
+	// use new shader class
+	fluidShader->setUniform("ourTexture", 0);
+
 
 	glBindVertexArray(fireVAO);
+	cout << "draw" << endl;
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 #if 0
 	// To make video from frames:
@@ -326,19 +343,19 @@ void Fire::fluid_simulation_step() {
 
 	}
 
-	// Dense regions rise up
-	FOR_EACH_CELL{
-		old_velocity(x, y).y += (old_density(x, y) * 20.0f - 5.0f) * dt; //????
+		// Dense regions rise up
+		FOR_EACH_CELL{
+			old_velocity(x, y).y += (old_density(x, y) * 20.0f - 5.0f) * dt; //????
 	}
 
 		//add_density(mouse.x, mouse.y, 10, 0.5f);
 
 	// fast movement is dampened???
-	FOR_EACH_CELL{
-		old_density(x, y) *= 0.99f;
+		FOR_EACH_CELL{
+			old_density(x, y) *= 0.99f;
 	}
 
-	add_density(nx * 0.25f, 30); 
+	add_density(nx * 0.25f, 30);
 	//add_density(nx * 0.75f, 30);
 
 	double t[10];
@@ -407,14 +424,14 @@ void Fire::on_move(int x, int y) {
 	mouse = glm::vec2(x * 1.0f * nx / SCR_WIDTH, y * 1.0f * ny / SCR_HEIGHT);
 }
 
-void Fire::on_move2(GLFWwindow* window, double xpos, double ypos) {
+void Fire::on_move2(GLFWwindow * window, double xpos, double ypos) {
 	int y = (int)SCR_HEIGHT - 1 - ypos;
 	int x = (int)xpos;
 	//std::cout << "x: " << x << " y: " << y << std::endl;
 	mouse = glm::vec2(x, y);
 }
 
-void Fire::on_mouse_button(GLFWwindow* window, int button, int action, int mods) {
+void Fire::on_mouse_button(GLFWwindow * window, int button, int action, int mods) {
 
 	// ...
 	double posX, posY;

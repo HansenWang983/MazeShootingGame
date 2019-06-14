@@ -1,12 +1,16 @@
 ﻿#include "Text.h"
 #include "filesystem.h"
+#include "EulerCamera.h"
+using namespace GXProject;
 
 Text::Text() {
 	// Shader
-	textShader = Shader(FileSystem::getPath("src/Shader/font.vs").c_str(), FileSystem::getPath("src/Shader/font.fs").c_str());
+	textShader = Shader(FileSystem::getPath("src/Shaders/font.vs").c_str(), FileSystem::getPath("src/Shaders/font.fs").c_str());
+
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
-	textShader.use();
-	textShader.setMat4("projection", projection); 
+	textShader.bind();
+	//textShader.setMat4("projection", projection); 
+	textShader.setUniform("projection", projection);
 
 	// 加载字体的面
 	FT_Library ft;
@@ -90,8 +94,8 @@ Text::Text() {
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// 正交投影矩阵
 	//glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
@@ -101,9 +105,12 @@ Text::Text() {
 }
 
 void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color) {
+	cout << "hhh" << endl;
 	//  激活合适的渲染状态
-	textShader.use();
-	glUniform3f(glGetUniformLocation(textShader.ID, "textColor"), color.x, color.y, color.z);
+	textShader.bind();
+	textShader.setUniform("textColor", color);
+
+	//glUniform3f(glGetUniformLocation(textShader.ID, "textColor"), color.x, color.y, color.z);
 	glActiveTexture(GL_TEXTURE0);
 	glBindVertexArray(VAO);
 
@@ -138,8 +145,9 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		// 绘制方块
+		glEnable(GL_BLEND);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-
+		glDisable(GL_BLEND);
 		// 更新位置到下一个字形的原点
 		// scale是什么
 		x += (ch.Advance >> 6) * scale;
