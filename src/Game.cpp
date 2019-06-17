@@ -27,11 +27,11 @@ Shadow myShadow;
 
 MeshPtr _mesh;
 
-bool isEnd(vec3 pos, vec3 cubePos) {
-	int x1 = cubePos.x - 0.5;
-	int x2 = cubePos.x + 0.5;
-	int y1 = cubePos.z - 0.5;
-	int y2 = cubePos.z + 0.5;
+bool isEnd(vec3 pos, vec3 cubePos, float size) {
+	float x1 = cubePos.x - size;
+	float x2 = cubePos.x + size;
+	float y1 = cubePos.z - size;
+	float y2 = cubePos.z + size;
 
 	if (pos.x >= x1 && pos.x <= x2 && pos.z >= y1 && pos.z <= y2)
 		return true;
@@ -66,7 +66,7 @@ Game::Game(){
 
 	meshTest->setShader(_genericShader);
 	//finalCube._cube->position = vec3(17.7, 0.7, 18.7);
-	finalCube._cube->position = vec3(17.7, 1.7, 18.7);
+	finalCube._cube->position = vec3(17.7, 1.7, 18.5);
 	finalCube._cube->scale = vec3(0.5, 0.5, 0.5);
 	finalCube._cube->mesh = meshTest;
 	
@@ -89,10 +89,10 @@ Game::Game(){
 	FireLight.color = vec3(1,1, 0);
 
 	//monsterPosition = vec3(2.25,1.6,15.4);
-	monsterPosition = vec3(0.5, 1.76, 0.5);
+	monsterPosition = vec3(3.9, 1.5, 3.4);
 	monsterPosTarget = monsterPosition;
 	monsterRotate = vec3(-90,0,180);
-	model_m = glm::translate(monsterPosition) * glm::rotate(-90.0f,vec3(1.0f,0.0f,0.0f)) *glm::rotate(180.0f,vec3(0.0f,0.0f,1.0f)) * glm::scale(vec3(0.025f,0.025f,0.025f));
+	model_m = glm::translate(monsterPosition) * glm::rotate(-90.0f,vec3(1.0f,0.0f,0.0f)) *glm::rotate(180.0f,vec3(0.0f,0.0f,1.0f)) * glm::scale(vec3(0.009f,0.009f,0.009f));
 
 	//load model file..
 	mymodel.LoadModel("../res/0-MD2model/s0/s0/tris.MD2");
@@ -179,7 +179,7 @@ void Game::update(double delta){
 	auto mmy = glm::rotate(monsterRotate.y,vec3(0,1,0));
 	auto mmz = glm::rotate(monsterRotate.z,vec3(0,0,1));
 	auto mmr = mmx*mmy*mmz;
-	model_m = glm::translate(monsterPosition) * mmr * glm::scale(vec3(0.025f,0.025f,0.025f));
+	model_m = glm::translate(monsterPosition) * mmr * glm::scale(vec3(0.009f,0.009f,0.009f));
 
 	glm::mat4 projection(1.0f);
 	glm::mat4 model(1.0f);
@@ -194,7 +194,7 @@ void Game::render(){
 	glm::vec3 new_pos = vec3(17.7, 1.1, 18.7);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
 	glm::vec3 new_rot = glm::vec3(0);
-	glm::vec3 new_scl = glm::vec3(0.1, 0.1, 0.1);
+	glm::vec3 new_scl = glm::vec3(0.2, 0.2, 0.2);
 	glm::mat4 newCubeMatrix = getModel(new_pos, new_rot, new_scl);
 
 	new_pos = vec3(17.7, 0.0, 18.7);
@@ -305,19 +305,19 @@ void Game::MonsterAI(){
 		if(rnd == 1){
 			std::cout << "????" << std::endl;
 
-			monsterPosTarget.x += 1;
+			monsterPosTarget.x += 0.5;
 			monsterDirection = Direction::NORTH;
 			monsterRotate.z = 0;
 		}else if(rnd==2){
-			monsterPosTarget.x -= 1;
+			monsterPosTarget.x -= 0.5;
 			monsterDirection = Direction::SOUTH;
 			monsterRotate.z = 180;
 		}else if(rnd==3){
-			monsterPosTarget.z += 1;
+			monsterPosTarget.z += 0.5;
 			monsterDirection = Direction::EAST;
 			monsterRotate.z = 270;
 		}else if(rnd==0){
-			monsterPosTarget.z -= 1;
+			monsterPosTarget.z -= 0.5;
 			monsterDirection = Direction::WEST;
 			monsterRotate.z = 90;
 		}
@@ -351,7 +351,9 @@ void Game::MonsterAI(){
 		}
 		monsterPosition = monsterPosTarget;
 	}else{
-		
+		if (isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
+			Application::get()->endGame();
+		}
 	}
 
 	//cout<<"Direction = "<<monsterDirection<<endl;
@@ -366,9 +368,12 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 		camera.Walk(0.1);
 		if(_walls->Collide(camera.getPosition())&& !_debugMode)
 			camera.Walk(-0.1);
-		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+		if (isEnd(camera.getPosition(), finalCube._cube->position, 0.2f) || isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
 			camera.Walk(-0.1);
-			//Application::get()->endGame();
+			Application::get()->endGame();
+		}
+		if (camera.getPosition().z >= 19.0f) {
+			camera.Walk(-0.1);
 		}
 		break;
 	case GLFW_KEY_S:
@@ -376,7 +381,7 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 		camera.Walk(-0.1);
 		if(_walls->Collide(camera.getPosition()) && !_debugMode)
 			camera.Walk(0.1);
-		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+		if (isEnd(camera.getPosition(), finalCube._cube->position, 0.2f) || isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
 			camera.Walk(0.1);
 			Application::get()->endGame();
 		}
@@ -386,7 +391,7 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 		camera.Strafe(-0.1);
 		if(_walls->Collide(camera.getPosition())&& !_debugMode)
 			camera.Strafe(0.1);
-		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+		if (isEnd(camera.getPosition(), finalCube._cube->position, 0.2f) || isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
 			camera.Strafe(0.1);
 			Application::get()->endGame();
 		}
@@ -396,7 +401,7 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 		camera.Strafe(0.1);
 		if(_walls->Collide(camera.getPosition())&& !_debugMode)
 			camera.Strafe(-0.1);
-		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+		if (isEnd(camera.getPosition(), finalCube._cube->position, 0.2f) || isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
 			camera.Strafe(-0.1);
 			Application::get()->endGame();
 		}
