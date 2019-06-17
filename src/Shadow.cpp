@@ -22,9 +22,29 @@ void Shadow::init() {
 	shadowShader->setUniform("diffuseTexture", 0);
 	shadowShader->setUniform("shadowMap", 1);
 
-	lightPos = glm::vec3(17.9, 2.0, 18.7);
+	//lightPos = glm::vec3(17.9, 2.0, 18.7);
+	//lightPos = glm::vec3(18.9907, 3.76, 18.6);
+	//lightPos = glm::vec3(17.7, 1.2, 18.7); // last try
+	//lightPos = glm::vec3(0.5, 1.76, 0.5);
+	//lightPos = glm::vec3(18.0, 1.2, 18.0);
 
-	float planeVertices[] = {
+	/////////////try
+	//lightPos = glm::vec3(18, 2.0, 19);
+	//lightPos = glm::vec3(19, 1.0, 19);
+	// ok1 lightPos = glm::vec3(17, 2.3, 17.9);
+	//lightPos = glm::vec3(17.2, 2.2, 18.2); // ok2
+	//lightPos = glm::vec3(17.2, 3.7, 18.2);
+	lightPos = glm::vec3(20, 3.7, 18.2);
+
+
+
+	///////////////////////////////////
+	//lightPos = glm::vec3(-2.0f, 4.0f, -1.0f);
+	//(17.7, 1.0, 18.7)
+	//testCube._cube->position = vec3(17.7, 1.2, 18.7);
+	
+
+	/*float planeVertices[] = {
 		// positions            // normals         // texcoords
 		 25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,  25.0f,  0.0f,
 		-25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
@@ -33,6 +53,28 @@ void Shadow::init() {
 		 25.0f, -0.5f,  25.0f,  0.0f, 1.0f, 0.0f,  25.0f,  0.0f,
 		-25.0f, -0.5f, -25.0f,  0.0f, 1.0f, 0.0f,   0.0f, 25.0f,
 		 25.0f, -0.5f, -25.0f,  0.0f, 1.0f, 0.0f,  25.0f, 25.0f
+	};*/
+
+	/*float planeVertices[] = {
+		// positions            // normals         // texcoords
+		 125.0f, 1.1f,  125.0f,  0.0f, 1.0f, 0.0f,  125.0f,  0.0f,
+		-125.0f, 1.1f,  125.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
+		-125.0f, 1.1f, -125.0f,  0.0f, 1.0f, 0.0f,   0.0f, 125.0f,
+
+		 125.0f, 1.1f,  125.0f,  0.0f, 1.0f, 0.0f,  125.0f,  0.0f,
+		-125.0f, 1.1f, -125.0f,  0.0f, 1.0f, 0.0f,   0.0f, 125.0f,
+		 125.0f, 1.1f, -125.0f,  0.0f, 1.0f, 0.0f,  125.0f, 125.0f
+	};*/
+
+	float planeVertices[] = {
+		// positions            // normals         // texcoords
+		 125.0f, 1.01f,  125.0f,  0.0f, 1.0f, 0.0f,  125.0f,  0.0f,
+		-125.0f, 1.01f,  125.0f,  0.0f, 1.0f, 0.0f,   0.0f,  0.0f,
+		-125.0f, 1.01f, -125.0f,  0.0f, 1.0f, 0.0f,   0.0f, 125.0f,
+
+		 125.0f, 1.01f,  125.0f,  0.0f, 1.0f, 0.0f,  125.0f,  0.0f,
+		-125.0f, 1.01f, -125.0f,  0.0f, 1.0f, 0.0f,   0.0f, 125.0f,
+		 125.0f, 1.01f, -125.0f,  0.0f, 1.0f, 0.0f,  125.0f, 125.0f
 	};
 
 	// plane VAO
@@ -152,28 +194,78 @@ void Shadow::renderCube() {
 void Shadow::renderScene(glm::mat4 floor_modelmatrix, glm::mat4 cube_modelmatrix, ShaderPtr shader) {
 	// floor
 	glm::mat4 model = glm::mat4(1.0f);
-	shader->setUniform("model", floor_modelmatrix);
+	//shader->setUniform("model", floor_modelmatrix);
+	shader->setUniform("model", model);
 	glBindVertexArray(planeVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+
+	// cubes
+	/*model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(0.0f, 1.5f, 0.0));
+	model = glm::scale(model, glm::vec3(0.5f));
+	shader->setUniform("model", model*cube_modelmatrix);
+	renderCube();
+
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(2.0f, 0.0f, 1.0));
+	model = glm::scale(model, glm::vec3(0.5f));
+	shader->setUniform("model", model);
+	renderCube();
+
+	model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(-1.0f, 0.0f, 2.0));
+	model = glm::rotate(model, glm::radians(60.0f), glm::normalize(glm::vec3(1.0, 0.0, 1.0)));
+	model = glm::scale(model, glm::vec3(0.25));
+	shader->setUniform("model", model);
+	renderCube();*/
+	//lightPos = glm::vec3(18.0, 1.2, 18.7);
+	//glm::mat4 tmpModel = getModel(lightPos);
+	glm::vec3 rot = glm::vec3(0, 0, 0);
+	glm::vec3 scl = glm::vec3(0.1, 0.1, 0.1);
+	glm::mat4 tmpModel = getModel(lightPos, rot, scl);
 
 	// cubes
 	shader->setUniform("model", cube_modelmatrix);
 	renderCube();
+	shader->setUniform("model", tmpModel);
+	//renderCube();
 	
 }
+
+glm::mat4 Shadow::getModel(glm::vec3 position = glm::vec3(0), glm::vec3 rotation = glm::vec3(0), glm::vec3 scale = glm::vec3(1)) {
+	glm::mat4 tm = glm::translate(glm::mat4(1), position);
+	glm::mat4 rotx = glm::rotate(glm::mat4(1), rotation.x, glm::vec3(1, 0, 0));
+	glm::mat4 roty = glm::rotate(glm::mat4(1), rotation.y, glm::vec3(0, 1, 0));
+	glm::mat4 rotz = glm::rotate(glm::mat4(1), rotation.z, glm::vec3(0, 0, 1));
+	glm::mat4 grot = rotx * roty * rotz;
+	glm::mat4 sclMat = glm::scale(glm::mat4(1), scale);
+
+	return tm * grot* sclMat;
+}
+
 
 void Shadow::render(glm::mat4 floor_modelmatrix, glm::mat4 cube_modelmatrix, EulerCamera camera) {
 	glm::mat4 lightProjection, lightView;
 	glm::mat4 lightSpaceMatrix;
 	float near_plane = 1.0f, far_plane = 7.5f;
-	EulerCamera lightCamera;
-	lightCamera.setPosition(glm::vec3(17.9, 2.0, 18.7));
-	lightProjection = lightCamera.getProjectionMatrix();
-	lightView = lightCamera.getViewMatrix();
-	//lightProjection = glm::perspective(glm::radians(45.0f), (GLfloat)SHADOW_WIDTH / (GLfloat)SHADOW_HEIGHT, near_plane, far_plane); // note that if you use a perspective projection matrix you'll have to change the light position as the current light position isn't enough to reflect the whole scene
-	//lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
-	//lightView = glm::lookAt(lightPos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
+	//EulerCamera lightCamera; //cube = glm::vec3(17.7, 1.0, 18.7);
+	//lightCamera.Reset(lightPos, glm::vec3(17.7, 1.0, 18.7), glm::vec3(0, 1, 0));
+	//lightPos = glm::vec3(18.0, 1.2, 18.7);
+	//lightCamera.setPosition(lightPos); //last try
+	//lightCamera.setPosition(glm::vec3(0.5, 1.76, 0.5));
+	//lightProjection = lightCamera.getProjectionMatrix();
+	//lightView = lightCamera.getViewMatrix();
+	//lightProjection = glm::perspective(glm::radians(45.0f), (GLfloat)1024 / (GLfloat)1024, near_plane, far_plane); // note that if you use a perspective projection matrix you'll have to change the light position as the current light position isn't enough to reflect the whole scene
+	lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
+	lightView = glm::lookAt(lightPos, glm::vec3(17.7, 1.0, 18.7), glm::vec3(0.0, 1.0, 0.0));
+	
+	//glm::mat4 tmpModel = getModel(lightPos);
+	glm::vec3 rot = glm::vec3(0, 0, 0);
+	glm::vec3 scl = glm::vec3(0.1, 0.1, 0.1);
+	glm::mat4 modellight = getModel(lightPos, rot, scl);
 	lightSpaceMatrix = lightProjection * lightView;
+	//lightSpaceMatrix = lightProjection * lightView;
 	// render scene from light's point of view
 	depthShader->bind();
 	depthShader->setUniform("lightSpaceMatrix", lightSpaceMatrix);

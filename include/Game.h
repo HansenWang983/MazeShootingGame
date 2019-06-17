@@ -41,6 +41,7 @@ namespace GXProject{
 		Ground* _walls;
 		Snow::Snow snow;
 		Cube finalCube;
+		
 
 		Cube testCube;
 

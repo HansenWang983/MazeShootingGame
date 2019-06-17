@@ -48,6 +48,8 @@ public:
 
 	void init();
 
+	glm::mat4 getModel(glm::vec3 position, glm::vec3 rotation, glm::vec3 scale);
+
 private:
 	unsigned int planeVAO;
 	unsigned int planeVBO;

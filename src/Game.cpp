@@ -65,12 +65,16 @@ Game::Game(){
 	_walls = Ground::loadFile("../res/defaultMaze.txt");
 
 	meshTest->setShader(_genericShader);
-	finalCube._cube->position = vec3(17.7, 0.7, 18.7);
+	//finalCube._cube->position = vec3(17.7, 0.7, 18.7);
+	finalCube._cube->position = vec3(17.7, 1.7, 18.7);
 	finalCube._cube->scale = vec3(0.5, 0.5, 0.5);
 	finalCube._cube->mesh = meshTest;
 	
-	testCube._cube->position = vec3(17.7, 0.7, 18.7);
-	testCube._cube->scale = vec3(0.5, 0.5, 0.5);
+	
+	//testCube._cube->position = vec3(18.9907, 3.76, 20.6);
+	//finalCube._cube->position = vec3(17.7, 1.7, 18.7);
+	testCube._cube->position = vec3(15.7, 1.2, 18.7);
+	testCube._cube->scale = vec3(0.1, 0.1, 0.1);
 	testCube._cube->mesh = meshTest;
 	
 	playerLight.position = camera.getPosition();
@@ -102,7 +106,7 @@ Game::Game(){
 
 	_debugMode = false;
 	//camera.Reset(vec3(0),vec3(-0.2,4.8,15.6),vec3(0,1,0));
-	//camera.setPosition(vec3(16.5284, 2.76, 17.7648));
+	//camera.setPosition(vec3(16.5284, 2.76, 17.7648)); -> shadow debug 专用
 	//camera.setPosition(vec3(17.5407, 1.76, 17.7923));
 	camera.setPosition(vec3(0.5, 1.76, 0.5)); // -> 起点
 
@@ -186,20 +190,21 @@ void Game::update(double delta){
 }
 
 void Game::render(){
-	glm::vec3 new_pos = vec3(17.7, 2.7, 18.7);
+	//glm::vec3(17.9, 2.0, 18.7)
+	glm::vec3 new_pos = vec3(17.7, 1.1, 18.7);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
 	glm::vec3 new_rot = glm::vec3(0);
-	glm::vec3 new_scl = glm::vec3(0.5, 0.5, 0.5);
+	glm::vec3 new_scl = glm::vec3(0.1, 0.1, 0.1);
 	glm::mat4 newCubeMatrix = getModel(new_pos, new_rot, new_scl);
 
-	new_pos = vec3(17.7, 0.7, 18.7);
+	new_pos = vec3(17.7, 0.0, 18.7);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
 	new_rot = glm::vec3(0);
-	new_scl = glm::vec3(0.5, 0.5, 0.5);
+	new_scl = glm::vec3(1, 1, 1);
 	glm::mat4 newFloorMatrix = getModel(new_pos, new_rot, new_scl);
 
 	glEnable(GL_BLEND);
-	//myShadow.render(newFloorMatrix, newCubeMatrix, camera);
+	myShadow.render(newFloorMatrix, newCubeMatrix, camera);
 	glDisable(GL_BLEND);
 	
 	//cout<<"render"<<endl;
@@ -232,9 +237,10 @@ void Game::render(){
 		obj.second->draw(VP);
 	}
 
-	_ground->draw(VP);
+	//_ground->draw(VP);
 	_walls->draw(VP);
-	finalCube._cube->draw(VP);
+	//finalCube._cube->draw(VP);
+	//testCube._cube->draw(VP);
 
 
 	
@@ -263,10 +269,10 @@ void Game::render(){
 	// Fire position (fluid simulation)
 	//position_ = vec3(17.9, 2.0, 18.7);
 	//position_ = vec3(16.5284, 2.76, 17.7648);
-	position_ = vec3(18.9907, 3.76, 18.6);
+	position_ = vec3(17.9907, 2.0, 18.5);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
 	rotation_ = glm::vec3(0);
-	scale_ = glm::vec3(2.5, 2.5, 2.5);
+	scale_ = glm::vec3(0.5, 0.5, 0.5);
 	// scale -> 2.5
 	// pos -> position_ = vec3(18.9907, 3.76, 18.6);
 
@@ -362,7 +368,7 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 			camera.Walk(-0.1);
 		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
 			camera.Walk(-0.1);
-			Application::get()->endGame();
+			//Application::get()->endGame();
 		}
 		break;
 	case GLFW_KEY_S:

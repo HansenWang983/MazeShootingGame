@@ -47,7 +47,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     if(projCoords.z > 1.0)
         shadow = 0.0;
     
-	shadow = 0.0;
+	//shadow = 0.0;
     return shadow;
 }
 
@@ -74,4 +74,5 @@ void main()
     vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * color;    
     
     FragColor = vec4(lighting, 1.0);
+	//FragColor = vec4(1.0， 1.0， 0.0, 1.0);
 }
