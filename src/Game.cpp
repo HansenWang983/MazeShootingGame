@@ -27,6 +27,7 @@ Shadow myShadow;
 
 MeshPtr _mesh;
 
+Text myText;
 bool isEnd(vec3 pos, vec3 cubePos, float size) {
 	float x1 = cubePos.x - size;
 	float x2 = cubePos.x + size;
@@ -47,6 +48,10 @@ Game::Game(){
 	/// fire (fluid simulation)
 	myFire.init();
 	myShadow.init();
+
+	// text
+	myText.init();
+
 
 	_genericShader = std::make_shared<Shader>("../src/Shaders/Model.vertexshader", "../src/Shaders/Model.fragmentshader");
 
@@ -190,6 +195,11 @@ void Game::update(double delta){
 }
 
 void Game::render(){
+	glEnable(GL_DEPTH_TEST);
+
+
+
+
 	//glm::vec3(17.9, 2.0, 18.7)
 	glm::vec3 new_pos = vec3(17.7, 1.1, 18.7);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
@@ -206,10 +216,16 @@ void Game::render(){
 	glEnable(GL_BLEND);
 	myShadow.render(newFloorMatrix, newCubeMatrix, camera);
 	glDisable(GL_BLEND);
+
+	
 	
 	//cout<<"render"<<endl;
 	glm::mat4 VP = camera.getProjectionMatrix()*camera.getViewMatrix();
 	sky.draw(VP);
+
+	
+
+
 	for (auto obj : scene){
 		auto objShader = obj.second->mesh->getMaterial()->shader;
 		objShader->bind();
@@ -238,23 +254,17 @@ void Game::render(){
 	}
 
 	//_ground->draw(VP);
+	
+
 	_walls->draw(VP);
+
+	
 	//finalCube._cube->draw(VP);
 	//testCube._cube->draw(VP);
 
 
 	
-	// render aiming center 
-	_centerShader->bind();
-	//  bind Texture
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D,_texture);
 	
-	// draw aiming cente
-	glEnable(GL_BLEND);
-	glBindVertexArray(_VAO);
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-	glDisable(GL_BLEND);
 
 	
 
@@ -265,6 +275,8 @@ void Game::render(){
 	animatedModelShader.BindModelMatrix(&model_m[0][0]); //need model matrix itself..
 
 	mymodel.RenderModel(&model_anim_state,&animatedModelShader);
+
+	
 
 	// Fire position (fluid simulation)
 	//position_ = vec3(17.9, 2.0, 18.7);
@@ -288,6 +300,28 @@ void Game::render(){
 	glBindVertexArray(_VAO);
 	myFire.on_frame(_fireShader, camera);
 	glDisable(GL_BLEND);
+
+	// text
+	// render text
+	glEnable(GL_BLEND);
+	myText.RenderText("Maze shooting game", 60.0f, 500.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+	glDisable(GL_BLEND);
+
+
+	// render aiming center 
+	_centerShader->bind();
+	//  bind Texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, _texture);
+
+	// draw aiming cente
+	glEnable(GL_BLEND);
+	glBindVertexArray(_VAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glDisable(GL_BLEND);
+
+
+
 
 	
 
@@ -470,16 +504,27 @@ void Game::cameraMouseMovement(int x, int y){
 
 
 void Game::setupCenter(){
-	float center_vertices[] = {
+	/*float center_vertices[] = {
         // positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
-        -0.1f,  0.1f,  0.0f,  0.0f,  0.0f,
-        -0.1f, -0.1f,  0.0f,  0.0f,  1.0f,
-         0.1f, -0.1f,  0.0f,  1.0f,  1.0f,
+        -0.1f,  0.1f,  0.9f,  0.0f,  0.0f,
+        -0.1f, -0.1f,  0.9f,  0.0f,  1.0f,
+         0.1f, -0.1f,  0.9f,  1.0f,  1.0f,
 
-        -0.1f,  0.1f,  0.0f,  0.0f,  0.0f,
-         0.1f, -0.1f,  0.0f,  1.0f,  1.0f,
-         0.1f,  0.1f,  0.0f,  1.0f,  0.0f
-    };
+        -0.1f,  0.1f,  0.9f,  0.0f,  0.0f,
+         0.1f, -0.1f,  0.9f,  1.0f,  1.0f,
+         0.1f,  0.1f,  0.9f,  1.0f,  0.0f
+    };*/
+
+	float center_vertices[] = {
+		// positions         // texture Coords (swapped y coordinates because texture is flipped upside down)
+		360.0f,  330.0f,  0.0f,  0.0f,  0.0f,
+		360.0f, 270.0f,  0.0f,  0.0f,  1.0f,
+		440.0f, 270.0f,  0.0f,  1.0f,  1.0f,
+
+		360.0f,  330.0f,  0.0f,  0.0f,  0.0f,
+		440.0f,  270.0f,  0.0f,  1.0f,  1.0f,
+		440.0f,  330.0f,  0.0f,  1.0f,  0.0f
+	};
 
     glGenVertexArrays(1, &_VAO);
     glGenBuffers(1, &_VBO);
@@ -536,6 +581,8 @@ void Game::setupCenter(){
 	_centerShader = std::make_shared<Shader>("../src/Shaders/center.vertexshader", "../src/Shaders/center.fragmentshader");
 	_centerShader->bind();
 	_centerShader->setUniform("centerTxc", 0);
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
+	_centerShader->setUniform("projection", projection);
 
 	_fireShader = std::make_shared<Shader>("../src/Shader/fluid_m.vs", "../src/Shader/fluid.fs");
 	

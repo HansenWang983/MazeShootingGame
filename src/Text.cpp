@@ -1,16 +1,25 @@
 ﻿#include "Text.h"
 #include "filesystem.h"
 #include "EulerCamera.h"
+#include <vector>
 using namespace GXProject;
 
 Text::Text() {
+	
+
+
+}
+
+void Text::init() {
 	// Shader
-	textShader = Shader(FileSystem::getPath("src/Shaders/font.vs").c_str(), FileSystem::getPath("src/Shaders/font.fs").c_str());
+	//textShader = std::make_shared<Shader>("../src/Shaders/center.vertexshader", "../src/Shaders/center.fragmentshader");
+
+	textShader = std::make_shared<Shader>(FileSystem::getPath("src/Shaders/font.vs").c_str(), FileSystem::getPath("src/Shaders/font.fs").c_str());
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
-	textShader.bind();
+	textShader->bind();
 	//textShader.setMat4("projection", projection); 
-	textShader.setUniform("projection", projection);
+	textShader->setUniform("projection", projection);
 
 	// 加载字体的面
 	FT_Library ft;
@@ -19,10 +28,10 @@ Text::Text() {
 	}
 
 	FT_Face face;
-	if (FT_New_Face(ft, FileSystem::getPath("resources/arial.ttf").c_str(), 0, &face)) {
+	if (FT_New_Face(ft, FileSystem::getPath("res/arial.ttf").c_str(), 0, &face)) {
 		std::cout << "ERROR::FREETYPE: FAILED TO LOAD FONT" << std::endl;
 	}
-
+	
 	// 定义文字大小
 	// 宽度值设置为0表示我们要从字体面给出的高度动态计算出字形的宽度
 	FT_Set_Pixel_Sizes(face, 0, 48);
@@ -30,7 +39,7 @@ Text::Text() {
 
 
 
-
+	
 
 	// 只生成表示128个ASCII字符的字符表
 	// 为每一个字符储存纹理和一些度量值
@@ -100,15 +109,13 @@ Text::Text() {
 	// 正交投影矩阵
 	//glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
 
-
-
 }
 
 void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color) {
 	cout << "hhh" << endl;
 	//  激活合适的渲染状态
-	textShader.bind();
-	textShader.setUniform("textColor", color);
+	textShader->bind();
+	textShader->setUniform("textColor", color);
 
 	//glUniform3f(glGetUniformLocation(textShader.ID, "textColor"), color.x, color.y, color.z);
 	glActiveTexture(GL_TEXTURE0);
@@ -124,6 +131,10 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 
 		GLfloat w = ch.Size.x * scale;
 		GLfloat h = ch.Size.y * scale;
+		cout << "xpos: " << xpos << endl;
+		cout << "ypos: " << ypos << endl;
+		cout << "h: " << h << endl;
+		cout << "w: " << w << endl;
 
 		// 当前字符的VBO
 		GLfloat vertices[6][4] = {
@@ -136,6 +147,14 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 			{xpos + w, ypos + h, 1.0, 0.0}
 		};
 
+		// test projection vertices
+		vector<glm::vec4> allVertices;
+		glm::vec4 one_test = glm::vec4(xpos, ypos + h, 0.0, 1.0);
+		glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
+		glm::vec4 new_pos = projection * one_test;
+		cout << "new pos: " << new_pos[0] << ", " << new_pos[1] << ", " << new_pos[2] << ", " << new_pos[3] << endl;
+
+
 		// 在方块上绘制字形纹理
 		glBindTexture(GL_TEXTURE_2D, ch.TextureID);
 
@@ -145,9 +164,9 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 		// 绘制方块
-		glEnable(GL_BLEND);
+		//glEnable(GL_BLEND);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-		glDisable(GL_BLEND);
+		//glDisable(GL_BLEND);
 		// 更新位置到下一个字形的原点
 		// scale是什么
 		x += (ch.Advance >> 6) * scale;

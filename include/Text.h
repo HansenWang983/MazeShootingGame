@@ -31,12 +31,13 @@ struct Character {
 class Text {
 public:
 	Text();
+	void init();
 	void RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color);
 
 private:
 	std::map<GLchar, Character> Characters;
 	GLuint VAO, VBO;
-	Shader textShader;
+	ShaderPtr textShader;
 	const unsigned int SCR_WIDTH = 800;
 	const unsigned int SCR_HEIGHT = 600;
 
