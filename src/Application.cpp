@@ -16,6 +16,7 @@ Application::Application(int GLMAJOR /* = 2 */, int GLMINOR /* = 1 */){
 	_versionMinor = GLMINOR;
 	_time = 0;
 	_shutdown = false;
+	_endGame = false;
 }
 Application::~Application(){
 	if(_window)
@@ -99,6 +100,8 @@ void Application::startLoop(){
 		//if shutdown then break the loop
 		if(_shutdown)
 			break;
+		if (_endGame)
+			break;
 	}
 }
 
@@ -137,4 +140,8 @@ glm::vec2 Application::getWindowSize(){
 
 void Application::shutdown(){
 	_shutdown = true;
+}
+
+void Application::endGame() {
+	_endGame = true;
 }

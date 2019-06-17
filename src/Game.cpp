@@ -26,6 +26,19 @@ Fire myFire(nx, ny, dt, iterations, vorticity);
 Shadow myShadow;
 
 MeshPtr _mesh;
+
+bool isEnd(vec3 pos, vec3 cubePos) {
+	int x1 = cubePos.x - 0.5;
+	int x2 = cubePos.x + 0.5;
+	int y1 = cubePos.z - 0.5;
+	int y2 = cubePos.z + 0.5;
+
+	if (pos.x >= x1 && pos.x <= x2 && pos.z >= y1 && pos.z <= y2)
+		return true;
+	else
+		return false;
+}
+
 Game::Game(){
 	auto windowpos = Application::get()->getWindowSize();
 	Application::get()->setMousePosition(windowpos.x/2,windowpos.y/2);
@@ -55,8 +68,7 @@ Game::Game(){
 	finalCube._cube->position = vec3(17.7, 0.7, 18.7);
 	finalCube._cube->scale = vec3(0.5, 0.5, 0.5);
 	finalCube._cube->mesh = meshTest;
-
-
+	
 	testCube._cube->position = vec3(17.7, 0.7, 18.7);
 	testCube._cube->scale = vec3(0.5, 0.5, 0.5);
 	testCube._cube->mesh = meshTest;
@@ -348,24 +360,41 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 		camera.Walk(0.1);
 		if(_walls->Collide(camera.getPosition())&& !_debugMode)
 			camera.Walk(-0.1);
+		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+			camera.Walk(-0.1);
+			Application::get()->endGame();
+		}
 		break;
 	case GLFW_KEY_S:
 		bpos = camera.getPosition();
 		camera.Walk(-0.1);
 		if(_walls->Collide(camera.getPosition()) && !_debugMode)
 			camera.Walk(0.1);
+		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+			camera.Walk(0.1);
+			Application::get()->endGame();
+		}
 		break;
 	case GLFW_KEY_A:
 		bpos = camera.getPosition();
 		camera.Strafe(-0.1);
 		if(_walls->Collide(camera.getPosition())&& !_debugMode)
 			camera.Strafe(0.1);
+		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+			camera.Strafe(0.1);
+			Application::get()->endGame();
+		}
 		break;
 	case GLFW_KEY_D:
 		bpos = camera.getPosition();
 		camera.Strafe(0.1);
 		if(_walls->Collide(camera.getPosition())&& !_debugMode)
 			camera.Strafe(-0.1);
+		if (isEnd(camera.getPosition(), finalCube._cube->position)) {
+			camera.Strafe(-0.1);
+			Application::get()->endGame();
+		}
+			
 		break;
 	case GLFW_KEY_ESCAPE:
 		Application::get()->shutdown();
