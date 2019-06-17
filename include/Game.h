@@ -16,6 +16,8 @@
 #include "Fire.h"
 #include "FireShader.h"
 #include "Shadow.h"
+#include "Bullet.h"
+#include "BulletManager.h"
 
 ///////text
 #include <ft2build.h>
@@ -83,6 +85,8 @@ namespace GXProject{
 		bool _debugMode;
 
 
+		// Bullet
+		BulletManager* bulletManager;
 
 		// fire
 		

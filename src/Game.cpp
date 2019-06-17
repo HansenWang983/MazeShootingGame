@@ -64,6 +64,8 @@ Game::Game(){
 
 	setupCenter();
 
+	// set up bullets
+	bulletManager = new BulletManager();
 	
 	//setupGround(10,10,nullptr,nullptr);
 	_ground = new Ground(20,20);
@@ -262,7 +264,8 @@ void Game::render(){
 	//finalCube._cube->draw(VP);
 	//testCube._cube->draw(VP);
 
-
+	// render bullets
+	bulletManager->render(playerLight.position, camera);
 	
 	
 
@@ -465,7 +468,17 @@ void Game::handleKeyboard(GLFWwindow* window,int key, int scancode,int action,in
 }
 
 void Game::handleMouseButtons(GLFWwindow* window,int button,int action,int mods){
-	//std::cout<<"mouse button Event"<<std::endl;
+	if (action == GLFW_PRESS) {
+		switch (button)
+		{
+		case GLFW_MOUSE_BUTTON_LEFT:
+			std::cout<<"GLFW_MOUSE_BUTTON_LEFT Event"<<std::endl;
+			bulletManager->newBullet(-camera.getLookDirection(), playerLight.position);
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Game::handleMouseMotion(GLFWwindow* window,int x, int y){

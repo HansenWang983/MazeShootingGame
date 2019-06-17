@@ -12,12 +12,11 @@ namespace GXProject{
 
 		glm::vec2 _angle;
 
-		glm::vec3 getLookDirection();
-
 	public:
 		EulerCamera();
 		~EulerCamera();
-
+		
+		glm::vec3 getLookDirection();
 		void updateViewMatrix();
 		void setPosition(glm::vec3 val){
 			_position = val;
@@ -34,12 +33,14 @@ namespace GXProject{
 		/// a left-turn.
 		/// </summary>//y--->z--->x
 		void Yaw(float angleDegrees);
-
+		float getYaw() const{return _angle.x;};
 		/// <summary>
 		/// Rotates the axes (U, N) about the R-axis with the specified angle. This is equivalent
 		/// to a look-up (up turn).
 		/// </summary>//x--->y--->z
 		void Pitch(float angleDegrees);
+		float getPitch() const{return _angle.y;};
+
 
 		/// <summary>
 		/// Rotates the axes (R, U) about the N-axis with the specified angle.
