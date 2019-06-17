@@ -201,8 +201,6 @@ void Game::render(){
 	glEnable(GL_DEPTH_TEST);
 
 
-
-
 	//glm::vec3(17.9, 2.0, 18.7)
 	glm::vec3 new_pos = vec3(17.7, 1.1, 18.7);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
@@ -221,14 +219,14 @@ void Game::render(){
 	glDisable(GL_BLEND);
 
 	
+	// render gun
+	renderGun(camera);
 	
 	//cout<<"render"<<endl;
 	glm::mat4 VP = camera.getProjectionMatrix()*camera.getViewMatrix();
 	sky.draw(VP);
 
 	
-	// // render gun
-	renderGun(camera);
 
 	for (auto obj : scene){
 		auto objShader = obj.second->mesh->getMaterial()->shader;
@@ -757,11 +755,11 @@ void Game::renderGun(EulerCamera camera){
 	gunMat[0] = glm::vec4(camera.getSide(), 0.0);
 	gunMat[1] = glm::vec4(camera.getUp(), 0.0);
 	gunMat[2] = glm::vec4(camera.getLookDirection(), 0.0);
-	gunMat[3] = glm::vec4(playerLight.position + camera.getLookDirection() * 0.0f, 1.0);
+	gunMat[3] = glm::vec4(playerLight.position - camera.getUp() * 0.2f - camera.getLookDirection() * 0.8f, 1.0);
 	gunMat = glm::scale(gunMat, glm::vec3(0.5f, 0.5f, 0.5f));
 
 	// compute our normal matrix for lighting
-	// normalMat = glm::inverseTranspose(glm::mat3(gunMat));
+	normalMat = glm::inverseTranspose(glm::mat3(gunMat));
 
 	_gunShader -> setUniform("u_Projection", camera.getProjectionMatrix());
 	_gunShader -> setUniform("u_View", viewLocalMat);

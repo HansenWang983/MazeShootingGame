@@ -5,6 +5,7 @@
 #include<GLFW/glfw3.h>
 #include"EulerCamera.h"
 #include <glm/glm.hpp>
+#include "glm/gtc/matrix_inverse.hpp"
 #include <map>
 #include <string>
 #include "Skybox.h"
