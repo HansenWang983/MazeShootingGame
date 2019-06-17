@@ -18,6 +18,8 @@
 #include "Shadow.h"
 #include "Bullet.h"
 #include "BulletManager.h"
+#include "lodepng.h"
+#include "glmmodel.h"
 
 ///////text
 #include <ft2build.h>
@@ -88,8 +90,12 @@ namespace GXProject{
 		// Bullet
 		BulletManager* bulletManager;
 
-		// fire
-		
+		// Gun
+		ShaderPtr _gunShader;
+		GLuint gunDiffuseMap, gunNormalMap, gunSpecularMap, gunEmissionMap;
+		GLuint gunVAO, gunVBO[3];
+		int numGunVertices;	
+		void renderGun(EulerCamera camera);
 
 	public:
 		EulerCamera camera;
@@ -101,6 +107,7 @@ namespace GXProject{
 		void setupShaderUniforms(ShaderPtr shdr);
 		void setupCenter();
 		void setupShadow();
+		void setupGun();
 		void update(double delta);
 		void render();
 		void renderAll();
