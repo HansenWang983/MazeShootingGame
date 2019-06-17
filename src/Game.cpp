@@ -391,6 +391,9 @@ void Game::MonsterAI(){
 		if (isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
 			Application::get()->endGame();
 		}
+		if (bulletManager->Collide(monsterPosition)) {
+			monsterPosition = vec3(100, 1.7, 100);
+		}
 	}
 
 	//cout<<"Direction = "<<monsterDirection<<endl;
