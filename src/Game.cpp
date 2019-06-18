@@ -223,7 +223,7 @@ void Game::render(){
 	
 	//cout<<"render"<<endl;
 	glm::mat4 VP = camera.getProjectionMatrix()*camera.getViewMatrix();
-	sky.draw(VP);
+	sky.draw(camera.getProjectionMatrix()*mat4(mat3(camera.getViewMatrix())));
 
 	
 
@@ -267,10 +267,6 @@ void Game::render(){
 	// render bullets
 	bulletManager->render(playerLight.position, camera);
 	
-	
-
-	
-
 	//
 	animatedModelShader.UseProgram();
 	animatedModelShader.BindVPMatrix(&VP[0][0]); //need vp matrix to render model in..
