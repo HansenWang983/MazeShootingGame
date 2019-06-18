@@ -17,6 +17,8 @@ namespace GXProject{
 		~EulerCamera();
 		
 		glm::vec3 getLookDirection();
+		glm::vec3 getUp() const {return _up;};
+		glm::vec3 getSide() const {return _right;};
 		void updateViewMatrix();
 		void setPosition(glm::vec3 val){
 			_position = val;
