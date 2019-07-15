@@ -63,6 +63,7 @@ Game::Game(){
 	sky.setShader(_skyboxShader);
 
 	setupCenter();
+	setupGun();
 
 	// set up bullets
 	bulletManager = new BulletManager();
@@ -200,8 +201,6 @@ void Game::render(){
 	glEnable(GL_DEPTH_TEST);
 
 
-
-
 	//glm::vec3(17.9, 2.0, 18.7)
 	glm::vec3 new_pos = vec3(17.7, 1.1, 18.7);
 	//position_ = vec3(2.10359, 1.76, 0.562899);
@@ -220,13 +219,14 @@ void Game::render(){
 	glDisable(GL_BLEND);
 
 	
+	// render gun
+	renderGun(camera);
 	
 	//cout<<"render"<<endl;
 	glm::mat4 VP = camera.getProjectionMatrix()*camera.getViewMatrix();
-	sky.draw(VP);
+	sky.draw(camera.getProjectionMatrix()*mat4(mat3(camera.getViewMatrix())));
 
 	
-
 
 	for (auto obj : scene){
 		auto objShader = obj.second->mesh->getMaterial()->shader;
@@ -267,10 +267,6 @@ void Game::render(){
 	// render bullets
 	bulletManager->render(playerLight.position, camera);
 	
-	
-
-	
-
 	//
 	animatedModelShader.UseProgram();
 	animatedModelShader.BindVPMatrix(&VP[0][0]); //need vp matrix to render model in..
@@ -390,6 +386,9 @@ void Game::MonsterAI(){
 	}else{
 		if (isEnd(camera.getPosition(), monsterPosition, 0.4f)) {
 			Application::get()->endGame();
+		}
+		if (bulletManager->Collide(monsterPosition)) {
+			monsterPosition = vec3(100, 1.7, 100);
 		}
 	}
 
@@ -636,4 +635,147 @@ void Game::setupShadow() {
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 
+}
+
+
+
+GLuint loadPNG(const char *name, bool highQualityMipmaps = false)
+{
+    unsigned int width;
+    unsigned int height;
+    unsigned char *data;
+    unsigned char *temp;
+    unsigned int i;
+    GLuint result = 0;
+
+	// use a simple stand-alone library to load our PNGs
+	lodepng_decode32_file(&data, &width, &height, name);
+
+	// make sure the load was successful
+	if(data)
+	{
+		// the pixel data is flipped vertically, so we need to flip it back with an in-place reversal
+		temp = new unsigned char[width * 4];
+		for(i = 0; i < height / 2; i ++)
+		{
+			memcpy(temp, &data[i * width * 4], (width * 4));								// copy row into temp array
+			memcpy(&data[i * width * 4], &data[(height - i - 1) * width * 4], (width * 4));	// copy other side of array into this row
+			memcpy(&data[(height - i - 1) * width * 4], temp, (width * 4));					// copy temp into other side of array
+		}
+
+		// we can generate a texture object since we had a successful load
+		glGenTextures(1, &result);
+		glBindTexture(GL_TEXTURE_2D, result);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+		// texture UVs should not clamp
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+		// generate high-quality mipmaps for this texture?
+		if(highQualityMipmaps)
+		{
+			glGenerateMipmap(GL_TEXTURE_2D);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		}
+		else
+		{
+			glGenerateMipmap(GL_TEXTURE_2D);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		}
+
+		// release the memory used to perform the loading
+		delete[] data;
+		delete[] temp;
+	}
+	else
+	{
+		cerr << "loadTexture() could not load " << name << endl;
+		exit(1);
+	}
+
+    return result;
+}
+
+void Game::setupGun(){
+	
+	GLMmodel *geometry;
+    // attempt to read the file; glmReadObj() will just quit if we can't
+    geometry = glmReadOBJ((char*)"../res/gun/gun.obj");
+    if(geometry)
+    {
+		glmScale(geometry, 1.0);
+
+		// build our buffer objects and then fill them with the geometry data we loaded
+		glGenVertexArrays(1, &gunVAO);
+		glBindVertexArray(gunVAO);
+		glGenBuffers(3, gunVBO);
+		glmBuildVBO(geometry, &numGunVertices, &gunVAO, gunVBO);
+	}
+
+	_gunShader = std::make_shared<Shader>("../src/Shaders/gun.vs", "../src/Shaders/gun.fs");
+	_gunShader -> bind();
+	_gunShader -> setUniform("a_Vertex", 0);
+	_gunShader -> setUniform("a_Normal", 1);
+	_gunShader -> setUniform("a_TexCoord", 2);
+	_gunShader -> setUniform("u_DiffuseMap", 0);
+	_gunShader -> setUniform("u_NormalMap", 1);
+	_gunShader -> setUniform("u_SpecularMap", 2);
+	_gunShader -> setUniform("u_EmissionMap", 3);
+	_gunShader -> setUniform("u_Sun", playerLight.position);
+	_gunShader -> setUniform("u_MaterialDiffuse", vec3(1.0, 0.95, 0.85));
+	_gunShader -> setUniform("u_MaterialSpecular", vec3(1.0, 0.95, 0.85));
+	_gunShader -> setUniform("u_SpecularIntensity", 8.0f);
+	_gunShader -> setUniform("u_SpecularHardness", 2.0f);
+	_gunShader -> setUniform("u_NormalMapStrength", 2.5f);
+
+	gunDiffuseMap = loadPNG("../res/gun/gun-diffuse-map.png");
+	gunNormalMap = loadPNG("../res/gun/gun-normal-map.png");
+	gunSpecularMap = loadPNG("../res/gun/gun-specular-map.png");
+	gunEmissionMap = loadPNG("../res/gun/gun-emission-map.png");
+}
+
+void Game::renderGun(EulerCamera camera){
+	
+	_gunShader -> bind();
+
+	glm::mat4 gunMat;	
+	glm::mat4 normalMat;
+	glm::mat4 viewLocalMat = camera.getViewMatrix();
+	// gunMat = glm::translate(gunMat, playerLight.position - camera.getLookDirection() * 2.0f);
+
+
+	// orient the gun in the same direction as the camera (with the recoil and reloading offsets applied)
+	gunMat[0] = glm::vec4(camera.getSide(), 0.0);
+	gunMat[1] = glm::vec4(camera.getUp(), 0.0);
+	gunMat[2] = glm::vec4(camera.getLookDirection(), 0.0);
+	gunMat[3] = glm::vec4(playerLight.position - camera.getUp() * 0.2f - camera.getLookDirection() * 0.8f, 1.0);
+	gunMat = glm::scale(gunMat, glm::vec3(0.5f, 0.5f, 0.5f));
+
+	// compute our normal matrix for lighting
+	normalMat = glm::inverseTranspose(glm::mat3(gunMat));
+
+	_gunShader -> setUniform("u_Projection", camera.getProjectionMatrix());
+	_gunShader -> setUniform("u_View", viewLocalMat);
+	_gunShader -> setUniform("u_Model", gunMat);
+	_gunShader -> setUniform("u_Normal", normalMat);
+
+	// we use diffuse, normal, specular, and emission texture maps when rendering for a really nice effect
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, gunDiffuseMap);
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, gunNormalMap);
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, gunSpecularMap);
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, gunEmissionMap);
+
+	// we don't want this gun transparent
+	glDisable(GL_BLEND);
+
+	// finally, render it
+	glBindVertexArray(gunVAO);
+	glDrawArrays(GL_TRIANGLES, 0, numGunVertices);
 }

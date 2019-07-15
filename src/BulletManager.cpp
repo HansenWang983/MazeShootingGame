@@ -35,3 +35,17 @@ void BulletManager::deleteBullet(std::string bulletId) {
 		}
 	}
 }
+
+bool BulletManager::Collide(glm::vec3 pos) {
+	for (auto it = bulletLists.begin(); it != bulletLists.end();) {
+		float x = (*it)->getPosition().x;
+		float y = (*it)->getPosition().z;
+		if (x >= (pos.x - 0.4) && x <= (pos.x + 0.4) && y >= (pos.z - 0.4) && y <= (pos.z + 0.4)) {
+			return true;
+		}
+		else {
+			it++;
+		}
+	}
+	return false;
+}
