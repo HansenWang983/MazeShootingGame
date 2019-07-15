@@ -108,8 +108,9 @@ void Fire::add_density(int px, int py, int r, float value) {
 	//std::cout << "in add density" << std::endl;
 	for (int y = -r; y <= r; y++) {
 		for (int x = -r; x <= r; x++) {
-			float d = sqrtf(x * x + y * y); // 计算斜边吗???
-			float u = smoothstep(float(r), 0.0f, d);  // 不知道怎么计算的嘤嘤嘤???
+			float d = sqrtf(x * x + y * y); // 计算斜边
+			float u = smoothstep(float(r), 0.0f, d);  // Hermite interpolation
+			//cout << "u " << u << endl;
 			old_density(px + x, py + y) += u * value;
 		}
 	}
@@ -178,7 +179,7 @@ void Fire::on_frame(ShaderPtr fluidShader, EulerCamera & camera) {
 	fluid_simulation_step();
 
 	double t = sec();
-	cout << "t " << t << endl;
+	//cout << "t " << t << endl;
 	// density field to pixels
 	FOR_EACH_CELL{
 		float rf = old_density(x, y);
@@ -203,7 +204,7 @@ void Fire::on_frame(ShaderPtr fluidShader, EulerCamera & camera) {
 
 
 	double dt = sec() - t;
-	printf("!!!! %f\n", dt * 1000);
+	//printf("!!!! %f\n", dt * 1000);
 
 
 
@@ -248,7 +249,7 @@ void Fire::on_frame(ShaderPtr fluidShader, EulerCamera & camera) {
 
 
 	glBindVertexArray(fireVAO);
-	cout << "draw" << endl;
+	//cout << "draw" << endl;
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 #if 0
 	// To make video from frames:
@@ -335,7 +336,7 @@ void Fire::init() {
 void Fire::fluid_simulation_step() {
 	//std::cout << "in!" << std::endl;
 	FOR_EACH_CELL{
-		if (x > nx * 0.5f) continue; // ??? 为啥
+		if (x > nx * 0.5f) continue; // 
 
 		float r = 10.0f;
 		old_velocity(x, y).x += randf(-r, +r);
@@ -387,7 +388,7 @@ void Fire::fluid_simulation_step() {
 	}
 
 	char title[256];
-	snprintf(title, sizeof(title), "%f %f %f %f\n", t[0], t[1], t[2], t[3]);
+	//snprintf(title, sizeof(title), "%f %f %f %f\n", t[0], t[1], t[2], t[3]);
 	//cout << "title: " << title << endl;
 	// 把title设置为窗口标题
 	//glfwSetWindowTitle(window, title);

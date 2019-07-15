@@ -177,7 +177,7 @@ void Game::update(double delta){
 
 	Monsterlight.position = monsterPosition;
 	playerLight.position = camera.getPosition();
-	cout<<playerLight.position.x<<" | "<<playerLight.position.y<<" | "<< playerLight.position.z<<endl;
+	//cout<<playerLight.position.x<<" | "<<playerLight.position.y<<" | "<< playerLight.position.z<<endl;
 	//cout<<_walls->Collide(playerLight.position)<<endl;
 	
 	mymodel.UpdateAnimation(&model_anim_state,delta / 1000);
@@ -292,7 +292,7 @@ void Game::render(){
 	// pos -> position_ = vec3(18.9907, 3.76, 18.6);
 
 	glm::mat4 fmodel = getModel(position_, rotation_, scale_);
-	cout << "fmodel " << fmodel[0][0] << endl;
+	//cout << "fmodel " << fmodel[0][0] << endl;
 
 	_fireShader->bind();
 	_fireShader->setUniform("VP", VP);
@@ -340,7 +340,7 @@ void Game::MonsterAI(){
 	vec3 bpos = monsterPosition;
 	if(monsterPosTarget == monsterPosition){
 		if(rnd == 1){
-			std::cout << "????" << std::endl;
+			//std::cout << "????" << std::endl;
 
 			monsterPosTarget.x += 0.5;
 			monsterDirection = Direction::NORTH;
