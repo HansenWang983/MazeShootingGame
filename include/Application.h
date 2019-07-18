@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <memory>
 #define GLEW_STATIC
 #include <gl/glew.h>
@@ -6,6 +6,7 @@
 #include <string>
 #include "Game.h"
 #include <glm/glm.hpp>
+#include "planerenderer.h"
 namespace GXProject{
 	class Application{
 	private:
@@ -46,6 +47,12 @@ namespace GXProject{
 
 		void update();
 		void render();
+
+		// 显示启动页面
+		void showLoadingScreen();
+
+
+
 		/*!
 		 * \function void windowResized(GLFWwindow*,int,int)
 		 *
@@ -70,6 +77,8 @@ namespace GXProject{
 		glm::vec2 getMousePosition();
 		//mouse position setter
 		void setMousePosition(float x, float y);
+		// 加载png图片
+		GLuint loadPNG(const char* name, bool highQualityMipmaps);
 		//destructor
 		~Application();
 

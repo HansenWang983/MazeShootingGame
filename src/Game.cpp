@@ -6,6 +6,7 @@
 #include <glm/glm.hpp>
 #include <iostream>
 #include "Helper.h"
+#include "particlelist.h"
 using namespace GXProject;
 using namespace std;
 using namespace glm;
@@ -41,6 +42,9 @@ bool isEnd(vec3 pos, vec3 cubePos, float size) {
 }
 
 Game::Game(){
+	const int MAX_PARTICLES = 5000;
+
+
 	auto windowpos = Application::get()->getWindowSize();
 	Application::get()->setMousePosition(windowpos.x/2,windowpos.y/2);
 	_turnOnMouseCamera = false;
@@ -120,7 +124,10 @@ Game::Game(){
 
 	_simpleDepthShader = std::make_shared<Shader>("../src/Shaders/simpleDepthShader.vs", "../src/Shaders/simpleDepthShader.fs");
 
+	// particle
+	initParticleList();
 
+	particles = new ParticleManager(MAX_PARTICLES);
 }
 
 Game::~Game(){
@@ -172,6 +179,7 @@ void Game::setupShaderUniforms(ShaderPtr shdr)
 }
 
 void Game::update(double delta){
+
 	//cout<<"update"<<endl;
 	cameraMouseMovement(0,0);
 	//moving the light with the camera.
@@ -195,6 +203,10 @@ void Game::update(double delta){
 	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600, 0.1f, 2000.f);
 	//floor.render(model,view,projection);
 	//snow.Render(delta, model, view, projection);
+
+	//particle
+	particles->recycle();
+	particles->update(dt);
 }
 
 void Game::render(){
@@ -219,8 +231,6 @@ void Game::render(){
 	glDisable(GL_BLEND);
 
 	
-	// render gun
-	renderGun(camera);
 	
 	//cout<<"render"<<endl;
 	glm::mat4 VP = camera.getProjectionMatrix()*camera.getViewMatrix();
@@ -319,12 +329,46 @@ void Game::render(){
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDisable(GL_BLEND);
 
+	// render gun
+	//renderGun(camera);
+
+	// particle
+	/*position_ = vec3(17.9907, 2.0, 18.5);
+	rotation_ = glm::vec3(0);
+	scale_ = glm::vec3(0.5, 0.5, 0.5);
+	glm::mat4 fmodel = getModel(position_, rotation_, scale_);
+	
+
+	_fireShader->bind();
+	_fireShader->setUniform("VP", VP);
+	_fireShader->setUniform("ModelMatrix", fmodel);
+	glm::mat4 VP = camera.getProjectionMatrix() * camera.getViewMatrix();*/
+	glm::vec3 sd = camera.getSide();
+	particles->render(camera.getProjectionMatrix(), camera.getViewMatrix(), camera.getSide(), camera.getUp());
+
+	cout << "==== side ====" << endl;
+	cout << sd[0] << " " << sd[1] << " " << sd[2] << endl;
+
 
 
 
 	
 
 
+}
+
+void Game::addParticle(ParticleConfig* config, vec3 pos, float lifeFactor)
+{
+
+	//vec3(model * vec4(aPos, 1.0));
+	//glm::vec3 new_pos = vec3(17.7, 1.1, 18.7);
+	//position_ = vec3(2.10359, 1.76, 0.562899);
+	
+	//glm::vec3 rot = glm::vec3(0);
+	//glm::vec3 scl = glm::vec3(1.0, 1.0, 1.0);
+	//glm::mat4 fmodel = getModel(pos, rot, scl);
+	//pos = vec3(fmodel * vec4(pos, 1.0));
+	particles->add(config, pos, lifeFactor);
 }
 
 void Game::renderAll() {
@@ -388,6 +432,18 @@ void Game::MonsterAI(){
 			Application::get()->endGame();
 		}
 		if (bulletManager->Collide(monsterPosition)) {
+			// add a quick, bright flash of impact
+			// 
+			// playerLight.position
+			// addParticle(impactFlare, impactPoint);
+			addParticle(impactFlare, monsterPosition);
+			for (int i = 0; i < 2; i++)
+			{
+				addParticle(smoke, monsterPosition);
+			}
+			
+			//addParticle(impactFlare, playerLight.position);
+
 			monsterPosition = vec3(100, 1.7, 100);
 		}
 	}
@@ -473,6 +529,17 @@ void Game::handleMouseButtons(GLFWwindow* window,int button,int action,int mods)
 		case GLFW_MOUSE_BUTTON_LEFT:
 			std::cout<<"GLFW_MOUSE_BUTTON_LEFT Event"<<std::endl;
 			bulletManager->newBullet(-camera.getLookDirection(), playerLight.position);
+			std::cout << "Player light pos: " << playerLight.position[0] << " " << playerLight.position[1] << " " << playerLight.position[2] << std::endl;
+			//std::cout << "camera look direction: " << camera.getLookDirection()[0] << " " << camera.getLookDirection()[1] << " " << camera.getLookDirection()[2] << std::endl;
+			
+			//addParticle(impactFlare, glm::vec3(0.5, 1.76, 0.5));
+			
+			//cout << "PlayerLight position " << playerLight.position[0] << " " << playerLight.position[1] << " " << playerLight.position[2] << std::endl;
+
+			/*for (int i = 0; i < 10; i++)
+			{
+				addParticle(smoke, monsterPosition);
+			}*/
 			break;
 		default:
 			break;
@@ -639,7 +706,7 @@ void Game::setupShadow() {
 
 
 
-GLuint loadPNG(const char *name, bool highQualityMipmaps = false)
+GLuint Game::loadPNG(const char *name, bool highQualityMipmaps = false)
 {
     unsigned int width;
     unsigned int height;
@@ -689,6 +756,7 @@ GLuint loadPNG(const char *name, bool highQualityMipmaps = false)
 		// release the memory used to perform the loading
 		delete[] data;
 		delete[] temp;
+		//cout << "hhhh7777" << endl;
 	}
 	else
 	{

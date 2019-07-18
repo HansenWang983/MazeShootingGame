@@ -15,7 +15,7 @@ out vec4 v_VertexPos;
 
 void main()
 {
-	v_VertexPos = u_View * u_Model * vec4(a_Vertex, 1.0);
+	v_VertexPos = u_View * u_Model * vec4(a_Vertex.xy, 1.0, 1.0);
     v_Normal = normalize(u_Normal * a_Normal);
     v_TexCoord = a_TexCoord;
 

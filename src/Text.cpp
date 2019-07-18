@@ -112,7 +112,7 @@ void Text::init() {
 }
 
 void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm::vec3 color) {
-	cout << "hhh" << endl;
+	//cout << "hhh" << endl;
 	//  激活合适的渲染状态
 	textShader->bind();
 	textShader->setUniform("textColor", color);
@@ -131,10 +131,10 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 
 		GLfloat w = ch.Size.x * scale;
 		GLfloat h = ch.Size.y * scale;
-		cout << "xpos: " << xpos << endl;
-		cout << "ypos: " << ypos << endl;
-		cout << "h: " << h << endl;
-		cout << "w: " << w << endl;
+		//cout << "xpos: " << xpos << endl;
+		//cout << "ypos: " << ypos << endl;
+		//cout << "h: " << h << endl;
+		//cout << "w: " << w << endl;
 
 		// 当前字符的VBO
 		GLfloat vertices[6][4] = {
@@ -152,7 +152,7 @@ void Text::RenderText(std::string text, GLfloat x, GLfloat y, GLfloat scale, glm
 		glm::vec4 one_test = glm::vec4(xpos, ypos + h, 0.0, 1.0);
 		glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
 		glm::vec4 new_pos = projection * one_test;
-		cout << "new pos: " << new_pos[0] << ", " << new_pos[1] << ", " << new_pos[2] << ", " << new_pos[3] << endl;
+		//cout << "new pos: " << new_pos[0] << ", " << new_pos[1] << ", " << new_pos[2] << ", " << new_pos[3] << endl;
 
 
 		// 在方块上绘制字形纹理

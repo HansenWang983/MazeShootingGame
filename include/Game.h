@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include<memory>
+#include "particlemanager.h"
 #include "GameObject.h"
 #include "Shader.h"
 #include<GLFW/glfw3.h>
@@ -98,6 +99,10 @@ namespace GXProject{
 		int numGunVertices;	
 		void renderGun(EulerCamera camera);
 
+		// particle
+		ParticleManager* particles;
+		
+
 	public:
 		EulerCamera camera;
 		Game();
@@ -124,6 +129,11 @@ namespace GXProject{
 
 
 		////文字部分
+		// ...
+
+		//particle
+		void addParticle(ParticleConfig* config, glm::vec3 pos, float lifeFactor = 1.0);
+		GLuint loadPNG(const char* name, bool highQualityMipmaps);
 		
 		
 	};
