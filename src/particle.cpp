@@ -113,6 +113,10 @@ void Particle::getPos(float* positionArray)
 	positionArray[2] = pos.z;
 }
 
+vec3 Particle::getPos2() {
+	return pos;
+}
+
 void Particle::getColor(float* colorArray)
 {
 	colorArray[0] = color.x;

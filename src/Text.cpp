@@ -14,7 +14,7 @@ void Text::init() {
 	// Shader
 	//textShader = std::make_shared<Shader>("../src/Shaders/center.vertexshader", "../src/Shaders/center.fragmentshader");
 
-	textShader = std::make_shared<Shader>(FileSystem::getPath("src/Shaders/font.vs").c_str(), FileSystem::getPath("src/Shaders/font.fs").c_str());
+	textShader = std::make_shared<Shader>("../src/Shaders/font.vs", "../src/Shaders/font.fs");
 
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(SCR_WIDTH), 0.0f, static_cast<GLfloat>(SCR_HEIGHT));
 	textShader->bind();
@@ -28,7 +28,7 @@ void Text::init() {
 	}
 
 	FT_Face face;
-	if (FT_New_Face(ft, FileSystem::getPath("res/arial.ttf").c_str(), 0, &face)) {
+	if (FT_New_Face(ft, "../res/arial.ttf", 0, &face)) {
 		std::cout << "ERROR::FREETYPE: FAILED TO LOAD FONT" << std::endl;
 	}
 	

@@ -20,5 +20,8 @@ namespace GXProject
 		static Ground* loadFile(std::string);
 
 		void draw(glm::mat4 vp,int is_Instancing = -1) override;
+		std::vector<std::string> getMaze();
+		int getY();
+		int getX();
 	};
 }

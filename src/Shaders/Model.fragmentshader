@@ -62,7 +62,7 @@ lightComponent calcPointLight(vec3 lightPosition, vec3 lightColor, float intensi
 	res.diffuseLight = vec3(cosine);
 	res.diffuseLight *= lightColor*intensity/attenuation;
 
-	res.ambientLight = lightColor * (intensity/4) / attenuation;
+	res.ambientLight = lightColor * (intensity/15) / attenuation;
 
 	vec3 reflected = reflect(-lightVector,NFragmentNormal);
 	vec3 eyeDir = normalize(eyePos-NNFragmentPosition);
@@ -81,11 +81,14 @@ lightComponent calcPointLight(vec3 lightPosition, vec3 lightColor, float intensi
 void main(){
     //TODO : send the position from vertex shader
     if(MODE == 0){
-        color = fragmentColor;
+        color = fragmentColor*0.8;
+        //color = normalize(color);
     }else if(MODE == 1){
-        color = texture(TxSampler,fragmentTXC).rgb;
+        color = texture(TxSampler,fragmentTXC).rgb * 0.8;
+        //color = normalize(color);
     }else if(MODE == 2){
-        color = texture(TxSampler,fragmentTXC).rgb + fragmentColor;
+        color = (texture(TxSampler,fragmentTXC).rgb + fragmentColor)*0.8;
+        //color = normalize(color);
     }
 
     vec3 ambientLight,diffuseLight,specularLight;

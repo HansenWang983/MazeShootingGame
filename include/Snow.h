@@ -69,5 +69,7 @@ namespace Snow {
 		bool mFirst;
 		GXProject::Shader* mUpdateShader;//更新粒子的GPUProgram
 		GXProject::Shader* mRenderShader;//渲染粒子的GPUProgram
+
+		glm::mat4 getModel();
 	};
 }

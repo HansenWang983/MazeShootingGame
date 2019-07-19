@@ -95,7 +95,7 @@ void Shadow::init() {
 
 	// load textures
 	// -------------
-	woodTexture = loadTexture(FileSystem::getPath("res/Textures/wood.png").c_str());
+	woodTexture = loadTexture("../res/Textures/wood.png");
 	//woodTexture = loadTexture(FileSystem::getPath("res/Ground/wall.png").c_str());
 
 	// configure depth map FBO

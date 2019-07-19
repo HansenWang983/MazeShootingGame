@@ -54,10 +54,10 @@ void initParticleList()
 	smoke->motionLimits[1] = vec3(0.008, 0.006, 0.008);
 	smoke->spinLimits[0] = -0.0008;
 	smoke->spinLimits[1] = 0.0008;
-	smoke->startSizeLimits[0] = 0.1;
-	smoke->startSizeLimits[1] = 0.1;
-	smoke->endSizeLimits[0] = 0.7;
-	smoke->endSizeLimits[1] = 0.85;
+	smoke->startSizeLimits[0] = 0.01;
+	smoke->startSizeLimits[1] = 0.01;
+	smoke->endSizeLimits[0] = 0.07;
+	smoke->endSizeLimits[1] = 0.085;
 	smoke->startColorLimits[0] = vec4(0.5, 0.5, 0.5, 1.0);
 	smoke->startColorLimits[1] = vec4(0.5, 0.5, 0.5, 1.0);
 	smoke->endColorLimits[0] = vec4(0.5, 0.5, 0.5, 0.0);

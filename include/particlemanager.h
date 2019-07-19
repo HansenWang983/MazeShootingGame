@@ -7,6 +7,7 @@
 #include "particle.h"
 
 #include <vector>
+#include <string>
 
 using namespace GXProject;
 
@@ -29,6 +30,10 @@ private:
 	GLuint vao;												// vertex array that encapsulates vertex buffer states
 	GLuint vbo;												// vertex buffer object
 
+	std::vector<std::string> maze;
+	int x;
+	int y;
+
 	Particle* particlePool;									// we allocate a large pool of particles and draw from it/replace as necessary
 	Particle** activeParticles;								// only contains the particles that are currently active
 	std::vector<int> textureIndices;						// where each texture index begins inside the sorted (by texture) list of active particles
@@ -44,8 +49,10 @@ private:
 	void insertIntoActivePool(Particle* particle);
 	Particle* getFreeParticle();
 
+	bool isCollide(glm::vec3 pos);
+
 public:
-	ParticleManager(int maxParticles);
+	ParticleManager(int maxParticles, std::vector<std::string> maze, int x, int y);
 	~ParticleManager();
 
 	// insert a particle at the given position, with a life factor varying from 0 to 1 (useful for particles emitting children particles)

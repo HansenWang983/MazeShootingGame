@@ -3,6 +3,8 @@
 #include "Application.h"
 #include <fstream>
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace GXProject;
 using namespace std;
 
@@ -126,4 +128,24 @@ bool Ground::Collide(vec3 pos){
 			return false;
 	}else
 		return false;
+}
+
+std::vector<std::string> Ground::getMaze() {
+	vector<string> result;
+	for (int i = 0; i < x; i++) {
+		string lineStr = "";
+		for (int j = 0; j < y; j++) {
+			lineStr += maze[i][j];
+		}
+		result.push_back(lineStr);
+	}
+	return result;
+}
+
+int Ground::getY() {
+	return y;
+}
+
+int Ground::getX() {
+	return x;
 }

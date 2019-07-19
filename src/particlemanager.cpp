@@ -15,11 +15,15 @@ using namespace glm;
 #include "../3rd_party/glm/glm/gtc/matrix_transform.inl"
 using namespace std;
 
-ParticleManager::ParticleManager(int maxParticles)
+ParticleManager::ParticleManager(int maxParticles, vector<string> maze, int x, int y)
 {
 	numInActivePool = 0;
 	freeParticleIndex = 0;
 	this->maxParticles = maxParticles;
+
+	this->maze = maze;
+	this->x = x;
+	this->y = y;
 
 	// allocate space for our particles
 	particlePool = new Particle[maxParticles];
@@ -113,6 +117,7 @@ void ParticleManager::update(double dt)
 	numToRecycle = 0;
 
 	// iterate through all particles
+	cout << "numInActivePool: " <<  numInActivePool << endl;
 	while (i < numInActivePool)
 	{
 		// track texture object used by particle to determine how to divide rendering by texture
@@ -126,7 +131,7 @@ void ParticleManager::update(double dt)
 		(*curr)->update(dt);
 
 		// if this particle is expected to die, increase the recycle count
-		if ((*curr)->getDead())
+		if ((*curr)->getDead() || isCollide((*curr)->getPos2()))
 		{
 			numToRecycle++;
 		}
@@ -152,7 +157,7 @@ void ParticleManager::recycle()
 	// either we go through all the particles or we recycle all the ones we need to erase (early exit to prevent unnecessary iteration)
 	while (numRecycled < numToRecycle && i < numInActivePool)
 	{
-		if ((*curr)->getDead())
+		if ((*curr)->getDead() || isCollide((*curr)->getPos2()))
 		{
 			// shift memory over dead particle---this places the next particle at our current iterator position
 			memmove(&activeParticles[i], &activeParticles[i + 1], sizeof(Particle*) * (numInActivePool - i - 1));
@@ -337,7 +342,7 @@ Particle* ParticleManager::getFreeParticle()
 		do
 		{
 			// is the particle unavailable?
-			if (!curr->getDead())
+			if (!curr->getDead() && !isCollide((curr)->getPos2()))
 			{
 				// particle in use, advance to the next one
 				i++;
@@ -368,4 +373,25 @@ Particle* ParticleManager::getFreeParticle()
 int ParticleManager::getNumActiveParticles()
 {
 	return numInActivePool;
+}
+
+bool ParticleManager::isCollide(vec3 pos) {
+	//int length = this->y;
+	//char(*maze2)[20] = (char(*)[20])maze;
+	int x1 = pos.x;
+	int y1 = pos.z;
+	cout << "pos" << pos.x << " " << pos.y << endl;
+	cout << "maze:" << maze[x1][y1] << endl;
+	if (x1 < 0)
+		return false;
+
+	if (y1 < 0)
+		return false;
+
+	if (maze[x1][y1] == '#') {
+		cout << "collide" << endl;
+		return false;
+	}
+	else
+		return false;
 }

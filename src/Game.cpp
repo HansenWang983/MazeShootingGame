@@ -127,7 +127,9 @@ Game::Game(){
 	// particle
 	initParticleList();
 
-	particles = new ParticleManager(MAX_PARTICLES);
+	//snow = new Snow::Snow();
+
+	particles = new ParticleManager(MAX_PARTICLES, _walls->getMaze(), _walls->getX(), _walls->getY());
 }
 
 Game::~Game(){
@@ -207,6 +209,8 @@ void Game::update(double delta){
 	//particle
 	particles->recycle();
 	particles->update(dt);
+
+
 }
 
 void Game::render(){
@@ -269,6 +273,7 @@ void Game::render(){
 	
 
 	_walls->draw(VP);
+	_ground->draw(VP);
 
 	
 	//finalCube._cube->draw(VP);
@@ -349,7 +354,7 @@ void Game::render(){
 	cout << "==== side ====" << endl;
 	cout << sd[0] << " " << sd[1] << " " << sd[2] << endl;
 
-
+	//snow->Render(0.002f, mat4(1.0f), camera.getViewMatrix(), camera.getProjectionMatrix());
 
 
 	
@@ -437,7 +442,7 @@ void Game::MonsterAI(){
 			// playerLight.position
 			// addParticle(impactFlare, impactPoint);
 			addParticle(impactFlare, monsterPosition);
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < 10; i++)
 			{
 				addParticle(smoke, monsterPosition);
 			}

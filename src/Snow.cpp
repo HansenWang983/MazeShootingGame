@@ -58,12 +58,14 @@ namespace Snow {
 		mUpdateShader->setUniform("MAX_LAUNCH", MAX_LAUNCH);
 		mUpdateShader->setUniform("MIN_LAUNCH", MIN_LAUNCH);
 		glUseProgram(0);
+		
 		return true;
 	}
 
 	void Snow::Render(float frametimeMills, glm::mat4& worldMatrix,
 		glm::mat4 viewMatrix, glm::mat4& projectMatrix)
 	{
+		worldMatrix = getModel();
 		mTimer += frametimeMills*1000.0f;
 		UpdateParticles(frametimeMills*1000.0f);
 		RenderParticles(worldMatrix, viewMatrix, projectMatrix);
@@ -128,6 +130,8 @@ namespace Snow {
 		mRenderShader->setUniform("model", worldMatrix);
 		mRenderShader->setUniform("view", viewMatrix);
 		mRenderShader->setUniform("projection", projectMatrix);
+		std::cout << "snow model" << worldMatrix[0].a << " " << worldMatrix[1].a << " " << worldMatrix[2].a << " " << worldMatrix[3].a << std::endl;
+		
 		//glBindVertexArray(mParticleArrays[mCurTransformFeedbackIndex]);
 		//glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER,0,mParticleBuffers[mCurTransformFeedbackIndex]);
 		glBindBuffer(GL_ARRAY_BUFFER, mParticleBuffers[mCurTransformFeedbackIndex]);
@@ -180,5 +184,19 @@ namespace Snow {
 			particles[x].size = INIT_SIZE;//发射器粒子大小
 			particles[x].lifetimeMills = 0.5f*(float(rand()) / float(RAND_MAX)) + 0.1f;
 		}
+	}
+
+	glm::mat4 Snow::getModel() {
+		glm::vec3 position(5.0f, 0.0f, 5.0f);
+		glm::vec3 rotation(0.0f);
+		glm::vec3 scale(1.0f);
+		glm::mat4 tm = glm::translate(glm::mat4(1), position);
+		glm::mat4 rotx = glm::rotate(glm::mat4(1), rotation.x, glm::vec3(1, 0, 0));
+		glm::mat4 roty = glm::rotate(glm::mat4(1), rotation.y, glm::vec3(0, 1, 0));
+		glm::mat4 rotz = glm::rotate(glm::mat4(1), rotation.z, glm::vec3(0, 0, 1));
+		glm::mat4 grot = rotx * roty*rotz;
+		glm::mat4 sclMat = glm::scale(glm::mat4(1), scale);
+
+		return tm * grot * sclMat;
 	}
 }

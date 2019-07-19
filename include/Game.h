@@ -22,6 +22,7 @@
 #include "BulletManager.h"
 #include "lodepng.h"
 #include "glmmodel.h"
+#include "Snow.h"
 
 ///////text
 #include <ft2build.h>
@@ -45,7 +46,7 @@ namespace GXProject{
 		Skybox sky;
 		Ground* _ground;
 		Ground* _walls;
-		Snow::Snow snow;
+		//Snow::Snow snow;
 		Cube finalCube;
 		
 
@@ -102,6 +103,9 @@ namespace GXProject{
 		// particle
 		ParticleManager* particles;
 		
+
+		//snow
+		Snow::Snow* snow;
 
 	public:
 		EulerCamera camera;

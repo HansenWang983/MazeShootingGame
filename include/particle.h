@@ -28,6 +28,8 @@ public:
 	bool getDead();
 	GLuint getTexture();
 
+	glm::vec3 getPos2();
+
 private:
 	// -- properties received from ParticleConfig -- //
 
